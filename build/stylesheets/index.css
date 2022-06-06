@@ -1,0 +1,146 @@
+@font-face {
+  font-family: Helvetica;
+  src: url("../fonts/helvetica_regular.otf");
+}
+@font-face {
+  font-family: Helvetica;
+  src: url("../fonts/helvetica_bold.otf");
+  font-weight: bold;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+}
+
+body {
+  background-color: #262B39;
+  color: #F2F7FF;
+  display: flex;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+}
+
+.navbar {
+  background-color: #212430;
+  width: 8rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar__logotype {
+  margin-top: 1rem;
+}
+.navbar__more-btn {
+  height: 2rem;
+  width: 2rem;
+  margin-top: 3rem;
+  background: none;
+  outline: none;
+  border: none;
+}
+.navbar__more-btn svg {
+  fill: #4D5777;
+}
+.navbar__more-btn :hover {
+  cursor: pointer;
+  fill: #5093F6;
+}
+.navbar__categories-list {
+  width: 100%;
+  margin-top: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar__categories-item {
+  width: 2rem;
+  height: 2rem;
+  margin-top: 1rem;
+}
+.navbar__categories-item svg {
+  fill: #80B2FF;
+}
+.navbar__categories-item :hover {
+  cursor: pointer;
+  fill: #5093F6;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  padding: 2rem;
+  background-color: #262B39;
+}
+.header__search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #212430;
+}
+.header__search-label {
+  margin: 0 2rem 0 1rem;
+}
+.header__input {
+  padding: 1.25rem;
+  border-radius: inherit;
+  background-color: inherit;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  color: #F2F7FF;
+}
+.header ::placeholder {
+  color: #4D5777;
+}
+.header__options-btn {
+  background: none;
+  outline: none;
+  border: none;
+}
+.header__authentication {
+  margin-left: 4rem;
+  display: flex;
+}
+.header__left {
+  margin-left: 25rem;
+  display: flex;
+}
+.header__login-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  background-color: #5093F6;
+  outline: none;
+  border: none;
+  color: #F2F7FF;
+}
+.header__login-btn svg {
+  margin-right: 0.5rem;
+  fill: #F2F7FF;
+}
+.header__login-btn:hover {
+  cursor: pointer;
+  background-color: #4E76B3;
+  color: #5093F6;
+}
+.header__login-btn:hover svg {
+  fill: #5093F6;
+}
+
+/*# sourceMappingURL=index.css.map */
