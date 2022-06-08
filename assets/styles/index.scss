@@ -1,20 +1,8 @@
     @import './colors';
-    @import './login.scss';
     @import './fonts';
     @import './video-item.scss';
-    *,
-    *::after,
-    *::before {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        background-color: $light_bg;
-        color: $main200;
-    }
-    
+    @import './base';
+    @import './header.scss';
     .container {
         padding-left: 8rem;
         width: 100%;
@@ -65,114 +53,6 @@
              :hover {
                 cursor: pointer;
                 fill: $main500;
-            }
-        }
-    }
-    
-    .header {
-        width: 100%;
-        position: relative;
-        &__top-header {
-            display: flex;
-            width: 100%;
-            padding: 2rem;
-            height: 8rem;
-        }
-        background-color: $light_bg;
-        &__search {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            border-radius: 1rem;
-            background-color: $dark_bg;
-            &-label {
-                margin: 0 2rem 0 1rem;
-            }
-        }
-        &__input {
-            padding: 1.25rem;
-            border-radius: inherit;
-            background-color: inherit;
-            width: 100%;
-            height: 100%;
-            outline: none;
-            border: none;
-            color: $main200;
-        }
-         ::placeholder {
-            color: $lighter_bg;
-        }
-        &__options-btn {
-            background: none;
-            outline: none;
-            border: none;
-            cursor: pointer;
-            svg {
-                height: 2rem;
-            }
-        }
-        &__authentication {
-            margin-left: 4rem;
-            display: flex;
-        }
-        &__left {
-            margin-left: 25rem;
-            display: flex;
-        }
-        &__login-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            height: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 1rem;
-            background-color: $main500;
-            outline: none;
-            border: none;
-            color: $main200;
-            svg {
-                margin-right: 0.5rem;
-                fill: $main200;
-            }
-            &:hover {
-                cursor: pointer;
-                background-color: $main600;
-                color: $main500;
-                svg {
-                    fill: $main500;
-                }
-            }
-        }
-        &__categories-wrapper {
-            height: 4rem;
-            width: 100%;
-            margin-bottom: 2rem;
-            position: relative;
-            position: relative;
-            overflow-x: scroll;
-        }
-         ::-webkit-scrollbar {
-            display: none;
-        }
-        &__categories {
-            position: absolute;
-            top: 50%;
-            left: 2rem;
-            display: flex;
-            transform: translateY(-50%);
-            list-style: none;
-        }
-        &__categories-item {
-            white-space: nowrap;
-            padding: 0.5em 2rem;
-            font-weight: bold;
-            color: $lighter_bg;
-            border-bottom: 0.125rem solid $lighter_bg;
-            &.active {
-                color: $main400;
-                border-color: $main400;
             }
         }
     }

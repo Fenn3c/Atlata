@@ -1,0 +1,75 @@
+@import './colors';
+@import './fonts';
+@import './base';
+.authentication {
+    background-color: $dark_bg;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8rem;
+    &__wrapper {
+        padding: 2rem;
+        background-color: $light_bg;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__logotype {
+        height: 8rem;
+        margin-bottom: 8rem;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+    &__title {
+        font-size: 2rem;
+        margin: 0 8rem 2rem;
+    }
+    &__label {
+        color: $lighter_bg;
+        &-required {
+            color: $lighter_bg;
+            padding-bottom: 0.5rem;
+            &::after {
+                content: ' *';
+                color: $error;
+            }
+        }
+    }
+    &__input {
+        padding: 0.75rem 0.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+        border: none;
+        outline: none;
+        background-color: $dark_bg;
+        color: $main200;
+        &::placeholder {
+            color: $lighter_bg;
+        }
+    }
+    &__btn {
+        cursor: pointer;
+        margin-top: 1rem;
+        padding: 0.75rem 1rem;
+        background-color: $main500;
+        color: $main200;
+        outline: none;
+        border: none;
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
+        &:hover {
+            background-color: $main600;
+            color: $main400;
+        }
+    }
+    &__link {
+        align-self: center;
+        justify-self: center;
+        color: $main500;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,13 @@
+    @import './colors';
+    *,
+    *::after,
+    *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        background-color: $light_bg;
+        color: $main200;
+    }

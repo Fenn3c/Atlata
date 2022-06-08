@@ -1,0 +1,103 @@
+@font-face {
+  font-family: Helvetica;
+  src: url("../fonts/helvetica_regular.otf");
+}
+@font-face {
+  font-family: Helvetica;
+  src: url("../fonts/helvetica_bold.otf");
+  font-weight: bold;
+}
+*,
+*::before,
+*::after {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.85rem;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #262B39;
+  color: #F2F7FF;
+}
+
+.authentication {
+  background-color: #212430;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8rem;
+}
+.authentication__wrapper {
+  padding: 2rem;
+  background-color: #262B39;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.authentication__logotype {
+  height: 8rem;
+  margin-bottom: 8rem;
+}
+.authentication__form {
+  display: flex;
+  flex-direction: column;
+}
+.authentication__title {
+  font-size: 2rem;
+  margin: 0 8rem 2rem;
+}
+.authentication__label {
+  color: #4D5777;
+}
+.authentication__label-required {
+  color: #4D5777;
+  padding-bottom: 0.5rem;
+}
+.authentication__label-required::after {
+  content: " *";
+  color: #FB2626;
+}
+.authentication__input {
+  padding: 0.75rem 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  outline: none;
+  background-color: #212430;
+  color: #F2F7FF;
+}
+.authentication__input::placeholder {
+  color: #4D5777;
+}
+.authentication__btn {
+  cursor: pointer;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: #5093F6;
+  color: #F2F7FF;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+.authentication__btn:hover {
+  background-color: #4E76B3;
+  color: #80B2FF;
+}
+.authentication__link {
+  align-self: center;
+  justify-self: center;
+  color: #5093F6;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=authentication.css.map */
