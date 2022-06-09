@@ -1,0 +1,21 @@
+@import './colors';
+.option {
+    padding: 2rem;
+    background-color: $light_bg;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    &__form {
+        margin-left: 4rem;
+    }
+    &__title {
+        margin-bottom: 0.75rem;
+    }
+    &__description {
+        color: $lighter_bg;
+    }
+    &__checkbox {
+        background-color: $dark_bg;
+    }
+}

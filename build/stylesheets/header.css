@@ -1,17 +1,113 @@
-/* Error: Undefined variable.
- *    ,
- * 14 |     background-color: $light_bg;
- *    |                       ^^^^^^^^^
- *    '
- *   assets\styles\header.scss 14:23  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a    \2577 \a 14 \2502      background-color: $light_bg;\d\a    \2502                        ^^^^^^^^^\a    \2575 \a   assets\\styles\\header.scss 14:23  root stylesheet";
+.header {
+  width: 100%;
+  position: relative;
+  background-color: #262B39;
 }
+.header__logotype {
+  width: 4rem;
+  margin-right: 2rem;
+}
+.header__top-header {
+  display: flex;
+  width: 100%;
+  padding: 2rem;
+  height: 8rem;
+}
+.header__search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #212430;
+}
+.header__search-label {
+  margin: 0 2rem 0 1rem;
+}
+.header__input {
+  padding: 1.25rem;
+  border-radius: inherit;
+  background-color: inherit;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  color: #F2F7FF;
+}
+.header ::placeholder {
+  color: #4D5777;
+}
+.header__options-btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.header__options-btn svg {
+  height: 2rem;
+}
+.header__authentication {
+  margin-left: 4rem;
+  display: flex;
+}
+.header__left {
+  margin-left: 25rem;
+  display: flex;
+}
+.header__login-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  height: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  background-color: #5093F6;
+  outline: none;
+  border: none;
+  color: #F2F7FF;
+}
+.header__login-btn svg {
+  margin-right: 0.5rem;
+  fill: #F2F7FF;
+}
+.header__login-btn:hover {
+  cursor: pointer;
+  background-color: #4E76B3;
+  color: #5093F6;
+}
+.header__login-btn:hover svg {
+  fill: #5093F6;
+}
+.header__categories-wrapper {
+  height: 4rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+  position: relative;
+  overflow-x: scroll;
+}
+.header ::-webkit-scrollbar {
+  display: none;
+}
+.header__categories {
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  display: flex;
+  transform: translateY(-50%);
+  list-style: none;
+}
+.header__categories-item {
+  white-space: nowrap;
+  padding: 0.5em 2rem;
+  font-weight: bold;
+  color: #4D5777;
+  border-bottom: 0.125rem solid #4D5777;
+}
+.header__categories-item.active {
+  color: #80B2FF;
+  border-color: #80B2FF;
+}
+
+/*# sourceMappingURL=header.css.map */

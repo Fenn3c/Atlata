@@ -1,0 +1,47 @@
+@import './base';
+@import './colors';
+@import './navbar.scss';
+@import './header.scss';
+@import './options.scss';
+.container {
+    padding-left: 8rem;
+}
+
+.main {
+    padding: 2rem;
+    &__title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    &__wrapper {
+        padding: 2rem;
+        background-color: $dark_bg;
+        border-radius: 1rem;
+    }
+    &__progress {
+        width: 100%;
+        &::-webkit-progress-bar {
+            background-color: $main600;
+        }
+        &::-webkit-progress-value {
+            background-color: $main600;
+        }
+    }
+    &__video {
+        width: 50rem;
+        height: 30rem;
+        background: black;
+    }
+    &__edit-video {
+        width: 2rem;
+        height: 2rem;
+        background: none;
+        border: none;
+        svg {
+            fill: $main500;
+        }
+    }
+    &__video-edit-wrapper {
+        display: flex;
+    }
+}

@@ -1,0 +1,78 @@
+@import './base';
+@import './colors';
+@import './navbar.scss';
+@import './header.scss';
+@import './options.scss';
+.container {
+    padding-left: 8rem;
+}
+
+.main {
+    padding: 2rem;
+    &__title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    &__wrapper {
+        padding: 2rem;
+        background-color: $dark_bg;
+        border-radius: 1rem;
+    }
+    &__profile {
+        display: flex;
+        background-color: $light_bg;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+    }
+    &__edit-wrapper {
+        margin-left: 2rem;
+    }
+    &__profile-title-wrapper {
+        display: flex;
+    }
+    &__profile-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    &__edit-btn-small {
+        margin-left: 1rem;
+        background: none;
+        border: none;
+        width: 2rem;
+        height: 2rem;
+        svg {
+            fill: $main500;
+        }
+    }
+    &__pfp-wrapper {
+        position: relative;
+        width: 16rem;
+        height: 16rem;
+    }
+    &__pfp {
+        width: 100%;
+        height: 100%;
+        border-radius: 4rem;
+    }
+    &__edit-btn {
+        position: absolute;
+        background: none;
+        border: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        svg {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+    &__profile-textarea {
+        background: $dark_bg;
+        width: 30rem;
+        height: 10rem;
+        color: $main200;
+        padding: 1rem 0.5rem;
+        border: none;
+    }
+}

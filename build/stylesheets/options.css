@@ -1,0 +1,22 @@
+.option {
+  padding: 2rem;
+  background-color: #262B39;
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.option__form {
+  margin-left: 4rem;
+}
+.option__title {
+  margin-bottom: 0.75rem;
+}
+.option__description {
+  color: #4D5777;
+}
+.option__checkbox {
+  background-color: #212430;
+}
+
+/*# sourceMappingURL=options.css.map */
