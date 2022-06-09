@@ -44,9 +44,63 @@
         </header>
 
         <main class="main">
-
             <div class="main__video-container">
-                <video class="main__video" src="./assets/videos/test.mp4" controls></video>
+
+                <div class="main__video-wrapper video">
+                    <video id="video" class="video__source" loop>
+                       <source src="./assets/videos/test.mp4"></source>
+                    </video>
+                    <div id="controls-wrap" class="video__controls">
+                        <button id="play" class="video__play-btn">
+                            <svg  width="64" height="69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M59.123 26.112c6.461 3.565 6.461 12.852 0 16.417L13.935 67.46C7.687 70.908.031 66.388.031 59.252V9.388c0-7.136 7.656-11.655 13.904-8.208l45.188 24.932z" fill="#4E76B3"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M59.367 41.94c6.178-3.429 6.178-12 0-15.43-6.24-3.463-13.57 2.467-11.087 8.969l1.145 2.998c1.478 3.87 6.228 5.524 9.942 3.463zm-25.792 4.648c5.402 0 9.228-5.072 7.55-10.008l-4.896-14.393c-.421-1.237-1.621-2.073-2.975-2.073-1.4 0-2.628.892-3.01 2.185l-4.31 14.565c-1.441 4.876 2.368 9.724 7.64 9.724zm-8.05 14.134c3.644-2.022 2.15-7.378-2.057-7.378-1.741 0-3.294 1.054-3.876 2.631-1.28 3.465 2.62 6.585 5.932 4.747zm-15-2.253C8.452 63.897 1.05 66.602.115 60.89A8.854 8.854 0 0 1 0 59.46V8.992C0 2.134 7.722-2.152 13.9 1.277L20.7 5.05c4.879 2.708 7.023 8.398 5.081 13.481L10.525 58.47z" fill="#5D95EA"/>
+                            </svg>
+                        </button>
+                        <div class="video__controls-menu">
+                            <div class="video__progress-wrapper">
+                                <input type="range" id="video-progress" class="video__progress" value="10" max="100"></input>
+                            </div>
+                            <div class="video__controls-bottom">
+
+                                <div class="video__controls-left">
+                                    <button id="play-small" class="video__play-btn-small">
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.21 3.577c-.873-.466-1.78.195-1.78.948v14.95c0 .753.907 1.414 1.78.948l13.984-7.474c.79-.423.79-1.475 0-1.897L5.209 3.577zM0 4.525C0 1 3.83-1.049 6.826.552L20.81 8.027c3.209 1.715 3.209 6.232 0 7.946L6.826 23.448l-.75-1.404.75 1.404C3.831 25.048 0 23 0 19.474V4.525z" />
+                                        </svg>
+                                    </button>
+                                    <button id="stop-small" class="video__play-btn-small hidden">
+                                        <svg viewBox="0 0 24 24"fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="4" height="20" rx="2"/>
+    <rect x="13" width="4" height="20" rx="2" />
+</svg>
+
+                                    </button>
+                                    <button id="volume" class="video__volume-btn">
+                                        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M23.905 7.173a1.336 1.336 0 0 0-2.079 1.679 5.33 5.33 0 0 1 0 6.315 1.333 1.333 0 0 0 1.04 2.171 1.332 1.332 0 0 0 1.039-.492 7.994 7.994 0 0 0 0-9.673zM18.163.178a1.332 1.332 0 0 0-1.333 0l-8.62 5.93H1.55A1.332 1.332 0 0 0 .217 7.438v9.14a1.332 1.332 0 0 0 1.332 1.332H8.21l8.54 5.862c.234.152.508.23.786.227a1.332 1.332 0 0 0 1.333-1.332V1.35a1.331 1.331 0 0 0-.706-1.173zm-1.959 19.958-6.795-4.663c-.224-.15-.489-.23-.76-.226H2.882V8.772H8.65c.27.003.535-.076.76-.227l6.794-4.663v16.254z" />
+                                        </svg>
+                                    </button>
+                                    <p id="timer" class="video__timer">0:00/8:09</p>
+                                </div>
+                                <div class="video__controls-right">
+                                    <button id="settings" class="video__settings-btn">
+                                        <svg  viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.702 9.429a3.581 3.581 0 0 0-3.593 2.036 3.592 3.592 0 0 0 2.628 5.071 3.58 3.58 0 0 0 3.732-1.768c.364-.644.52-1.384.448-2.12a3.597 3.597 0 0 0-3.215-3.22v0zM22.332 13c-.002.39-.03.78-.085 1.166l2.532 1.988a.606.606 0 0 1 .137.771l-2.395 4.15a.606.606 0 0 1-.736.257l-2.515-1.014a.901.901 0 0 0-.85.098 9.2 9.2 0 0 1-1.206.704.893.893 0 0 0-.494.68l-.377 2.686a.622.622 0 0 1-.598.514h-4.79a.621.621 0 0 1-.6-.497L9.98 21.82a.902.902 0 0 0-.504-.685 8.69 8.69 0 0 1-1.202-.705.895.895 0 0 0-.846-.096l-2.515 1.013a.605.605 0 0 1-.735-.256l-2.396-4.15a.606.606 0 0 1 .137-.771l2.14-1.682a.9.9 0 0 0 .336-.79 7.657 7.657 0 0 1 0-1.393.898.898 0 0 0-.34-.782L1.915 9.842a.606.606 0 0 1-.132-.767l2.395-4.15a.606.606 0 0 1 .736-.257L7.43 5.682a.901.901 0 0 0 .85-.098 9.21 9.21 0 0 1 1.206-.704.893.893 0 0 0 .494-.68l.377-2.686A.621.621 0 0 1 10.954 1h4.791a.622.622 0 0 1 .599.497l.376 2.682a.902.902 0 0 0 .504.685c.419.203.82.438 1.202.705a.895.895 0 0 0 .846.096l2.515-1.013a.605.605 0 0 1 .736.256l2.395 4.15a.606.606 0 0 1-.137.771l-2.14 1.682a.9.9 0 0 0-.34.79c.02.232.032.465.032.699z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button id="fullscreen" class="video__fullscreen-btn">
+                                        <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.667 4A1.333 1.333 0 0 1 4 2.667h2.667a1.333 1.333 0 0 0 0-2.667H4a4 4 0 0 0-4 4v2.667a1.333 1.333 0 0 0 2.667 0V4zm0 16A1.333 1.333 0 0 0 4 21.333h2.667a1.333 1.333 0 0 1 0 2.667H4a4 4 0 0 1-4-4v-2.667a1.333 1.333 0 0 1 2.667 0V20zM20 2.667A1.333 1.333 0 0 1 21.333 4v2.667a1.334 1.334 0 0 0 2.667 0V4a4 4 0 0 0-4-4h-2.667a1.333 1.333 0 1 0 0 2.667H20zM21.333 20A1.333 1.333 0 0 1 20 21.333h-2.667a1.333 1.333 0 1 0 0 2.667H20a4 4 0 0 0 4-4v-2.667a1.333 1.333 0 0 0-2.667 0V20z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
                 <h1 class="main__video-title">Progressive Web Apps in 100 Seconds // Build a PWA from Scratch</h1>
 
                 <p class="main__video-statistics">446 399 просмотров 16 дек. 2020 г.</p>
@@ -242,6 +296,48 @@
             </div>
         </main>
     </div>
+
+    <script>
+        let playing = false;
+        const video = document.getElementById('video')
+        const controlsWrap = document.getElementById('controls-wrap')
+        const playBtn = document.getElementById('play')
+        const playBtnSmall = document.getElementById('play-small')
+        const stopBtnSmall = document.getElementById('stop-small')
+        const fullscreen = document.getElementById('fullscreen')
+
+
+        function switchState() {
+            playBtn.classList.toggle('hidden')
+            playBtnSmall.classList.toggle('hidden')
+            stopBtnSmall.classList.toggle('hidden')
+            if (playing) {
+                video.pause()
+                playing = false
+            } else {
+                video.play()
+                playing = true
+            }
+        }
+
+        video.addEventListener('ended', () => {
+            video.pause()
+            playing = false
+        })
+        controlsWrap.addEventListener('click', () => {
+            switchState()
+        })
+        document.addEventListener('keyup', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                switchState()
+            }
+        })
+        fullscreen.addEventListener('click', (e) => {
+            e.preventDefault();
+            video.requestFullscreen()
+        })
+    </script>
 </body>
 
 </html>

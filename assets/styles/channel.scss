@@ -1,0 +1,82 @@
+    @import './colors';
+    @import './fonts';
+    @import './video-item.scss';
+    @import './base';
+    @import './navbar.scss';
+    .container {
+        width: 100%;
+        padding-left: 8rem;
+    }
+    
+    .main {
+        width: 100%;
+        &__banner {
+            width: 100%;
+        }
+        &__channel {
+            width: 100%;
+            padding: 2rem;
+        }
+        &__pfp-wrapper {
+            margin-top: -6rem;
+            position: relative;
+            width: 10rem;
+            height: 10rem;
+            padding: 1.5rem;
+            border-radius: 2rem;
+            background-color: $light_bg;
+        }
+        &__pfp {
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+        &__channel-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 1.25rem;
+        }
+        &__name-wrap {}
+        &__channel-name {
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        &__subscribers {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        &__subscribe-form {}
+        &__subscribe-btn {
+            cursor: pointer;
+            padding: 0.75rem 2rem;
+            background: $main500;
+            color: $main200;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            border-radius: 0.5rem;
+            &:hover {
+                background-color: $main600;
+                color: $main500;
+            }
+        }
+        .videos {
+            margin-top: 2rem;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            background-color: $dark_bg;
+            padding: 2rem;
+            border-radius: 1rem;
+            background-color: $dark_bg;
+            &__video-item {
+                margin: 0 2rem 2rem 0;
+                &:nth-child(4n) {
+                    margin-right: 0;
+                }
+            }
+        }
+    }

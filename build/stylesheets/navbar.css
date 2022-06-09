@@ -1,0 +1,66 @@
+@font-face {
+  font-family: Helvetica;
+  src: url("../fonts/helvetica_regular.otf");
+}
+@font-face {
+  font-family: Helvetica;
+  src: url("../fonts/helvetica_bold.otf");
+  font-weight: bold;
+}
+*,
+*::before,
+*::after {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.85rem;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 10;
+  background-color: #212430;
+  min-width: 8rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar__logotype {
+  margin-top: 1rem;
+}
+.navbar__more-btn {
+  height: 2rem;
+  width: 2rem;
+  margin-top: 3rem;
+  background: none;
+  outline: none;
+  border: none;
+}
+.navbar__more-btn svg {
+  fill: #4D5777;
+}
+.navbar__more-btn :hover {
+  cursor: pointer;
+  fill: #5093F6;
+}
+.navbar__categories-list {
+  width: 100%;
+  margin-top: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar__categories-item {
+  width: 2rem;
+  height: 2rem;
+  margin-top: 1rem;
+}
+.navbar__categories-item svg {
+  fill: #80B2FF;
+}
+.navbar__categories-item :hover {
+  cursor: pointer;
+  fill: #5093F6;
+}
+
+/*# sourceMappingURL=navbar.css.map */

@@ -3,6 +3,7 @@
 @import './base';
 @import './header.scss';
 @import './video-item.scss';
+@import './video-player.scss';
 .header {
     margin-bottom: 2rem;
 }
@@ -115,6 +116,7 @@
         border: none;
         outline: none;
         border-radius: 1rem;
+        color: $main200;
         &::placeholder {
             color: $lighter_bg;
         }

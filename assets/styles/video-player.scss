@@ -1,0 +1,110 @@
+@import './colors';
+.video {
+    margin-bottom: 2rem;
+    &:hover {
+        .video__controls {
+            opacity: 1;
+        }
+    }
+    .hidden {
+        display: none;
+        opacity: 0;
+        cursor: default;
+    }
+    position: relative;
+    &__controls {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    &__source {
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 100%;
+    }
+    &__controls-menu {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding-top: 1rem;
+        background-color: $dark_bg_half;
+        right: 0;
+    }
+    &__controls-bottom {
+        display: flex;
+        align-items: center;
+        padding: 0 1rem 1rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+    &__progress-wrapper {
+        width: 100%;
+        padding: 0 1rem;
+    }
+    &__progress {
+        width: 100%;
+        height: 0.5rem;
+        margin-bottom: 1rem;
+        border: none;
+        background: red;
+        height: 7px;
+    }
+    &__controls-left {
+        display: flex;
+    }
+    &__controls-right {
+        display: flex;
+    }
+    @mixin video-btn {
+        background: 0;
+        cursor: pointer;
+        svg {
+            fill: $main500;
+            width: 2rem;
+            &:hover {
+                fill: $main600;
+            }
+        }
+        border: none;
+        outline: none;
+        margin-left: 1rem;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    &__play-btn {
+        cursor: pointer;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border: none;
+        outline: none;
+        transform: translate(-50%, -50%);
+        background: none;
+        svg:hover {
+            transform: scale(1.05);
+        }
+    }
+    &__play-btn-small {
+        @include video-btn;
+    }
+    &__volume-btn {
+        @include video-btn;
+    }
+    &__timer {
+        @include video-btn;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__settings-btn {
+        @include video-btn;
+    }
+    &__fullscreen-btn {
+        @include video-btn;
+    }
+}

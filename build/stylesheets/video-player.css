@@ -1,0 +1,162 @@
+.video {
+  margin-bottom: 2rem;
+  position: relative;
+}
+.video:hover .video__controls {
+  opacity: 1;
+}
+.video .hidden {
+  display: none;
+  opacity: 0;
+  cursor: default;
+}
+.video__controls {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.video__source {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+.video__controls-menu {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 1rem;
+  background-color: rgba(33, 36, 48, 0.8352941176);
+  right: 0;
+}
+.video__controls-bottom {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem 1rem;
+  width: 100%;
+  justify-content: space-between;
+}
+.video__progress-wrapper {
+  width: 100%;
+  padding: 0 1rem;
+}
+.video__progress {
+  width: 100%;
+  height: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  background: red;
+  height: 7px;
+}
+.video__controls-left {
+  display: flex;
+}
+.video__controls-right {
+  display: flex;
+}
+.video__play-btn {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: none;
+  outline: none;
+  transform: translate(-50%, -50%);
+  background: none;
+}
+.video__play-btn svg:hover {
+  transform: scale(1.05);
+}
+.video__play-btn-small {
+  background: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+}
+.video__play-btn-small svg {
+  fill: #5093F6;
+  width: 2rem;
+}
+.video__play-btn-small svg:hover {
+  fill: #4E76B3;
+}
+.video__play-btn-small:first-child {
+  margin-left: 0;
+}
+.video__volume-btn {
+  background: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+}
+.video__volume-btn svg {
+  fill: #5093F6;
+  width: 2rem;
+}
+.video__volume-btn svg:hover {
+  fill: #4E76B3;
+}
+.video__volume-btn:first-child {
+  margin-left: 0;
+}
+.video__timer {
+  background: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video__timer svg {
+  fill: #5093F6;
+  width: 2rem;
+}
+.video__timer svg:hover {
+  fill: #4E76B3;
+}
+.video__timer:first-child {
+  margin-left: 0;
+}
+.video__settings-btn {
+  background: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+}
+.video__settings-btn svg {
+  fill: #5093F6;
+  width: 2rem;
+}
+.video__settings-btn svg:hover {
+  fill: #4E76B3;
+}
+.video__settings-btn:first-child {
+  margin-left: 0;
+}
+.video__fullscreen-btn {
+  background: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+}
+.video__fullscreen-btn svg {
+  fill: #5093F6;
+  width: 2rem;
+}
+.video__fullscreen-btn svg:hover {
+  fill: #4E76B3;
+}
+.video__fullscreen-btn:first-child {
+  margin-left: 0;
+}
+
+/*# sourceMappingURL=video-player.css.map */
