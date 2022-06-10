@@ -34,6 +34,9 @@
   border-radius: 1rem;
   margin-bottom: 1rem;
 }
+.video-item img {
+  border-radius: 1rem;
+}
 .video-item__img {
   position: absolute;
   border-radius: inherit;
@@ -109,6 +112,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #F2F7FF;
 }
 
 body {
@@ -313,7 +321,7 @@ body {
 .main__video-item {
   margin: 0 2rem 2rem 0;
 }
-.main__video-item:nth-child(4) {
+.main__video-item:nth-child(4n) {
   margin-right: 0;
 }
 

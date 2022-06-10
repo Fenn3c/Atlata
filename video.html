@@ -15,7 +15,9 @@
 
         <header class="header">
             <div class="header__top-header">
-                <img src="./assets/img/svg/logotype.svg" alt="" class="header__logotype">
+                <a href="./index.html">
+                    <img src="./assets/img/svg/logotype.svg" alt="" class="header__logotype">
+                </a>
 
                 <form action="" class="header__search">
 
@@ -51,6 +53,7 @@
                        <source src="./assets/videos/test.mp4"></source>
                     </video>
                     <div id="controls-wrap" class="video__controls">
+                        <div id="pauseable" class="video__pauseable"></div>
                         <button id="play" class="video__play-btn">
                             <svg  width="64" height="69" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M59.123 26.112c6.461 3.565 6.461 12.852 0 16.417L13.935 67.46C7.687 70.908.031 66.388.031 59.252V9.388c0-7.136 7.656-11.655 13.904-8.208l45.188 24.932z" fill="#4E76B3"/>
@@ -59,21 +62,23 @@
                         </button>
                         <div class="video__controls-menu">
                             <div class="video__progress-wrapper">
-                                <input type="range" id="video-progress" class="video__progress" value="10" max="100"></input>
+                                <input type="range" id="video-progress" class="video__progress" value="0" max="100"></input>
                             </div>
                             <div class="video__controls-bottom">
 
                                 <div class="video__controls-left">
                                     <button id="play-small" class="video__play-btn-small">
-                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.21 3.577c-.873-.466-1.78.195-1.78.948v14.95c0 .753.907 1.414 1.78.948l13.984-7.474c.79-.423.79-1.475 0-1.897L5.209 3.577zM0 4.525C0 1 3.83-1.049 6.826.552L20.81 8.027c3.209 1.715 3.209 6.232 0 7.946L6.826 23.448l-.75-1.404.75 1.404C3.831 25.048 0 23 0 19.474V4.525z" />
-                                        </svg>
+<svg  viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5.38519 3.69764C4.48374 3.21582 3.54547 3.89899 3.54547 4.67818V20.1317C3.54547 20.9109 4.48375 21.5941 5.38519 21.1123L19.8413 13.3855C20.6589 12.9485 20.6589 11.8614 19.8413 11.4244L5.3852 3.69764C5.3852 3.69764 5.3852 3.69764 5.38519 3.69764ZM0 4.67818C0 1.03415 3.96011 -1.08419 7.05648 0.570797L7.05648 0.5708L21.5126 8.29757C24.8291 10.0703 24.8291 14.7396 21.5126 16.5123L7.05648 24.2391L6.28086 22.788L7.05648 24.2391C3.96011 25.8941 0 23.7757 0 20.1317V4.67818Z" fill="#5093F6"/>
+</svg>
+
                                     </button>
                                     <button id="stop-small" class="video__play-btn-small hidden">
-                                        <svg viewBox="0 0 24 24"fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="4" height="20" rx="2"/>
-    <rect x="13" width="4" height="20" rx="2" />
+                                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="6" height="24" rx="3" />
+<rect x="18" width="6" height="24" rx="3" />
 </svg>
+
 
                                     </button>
                                     <button id="volume" class="video__volume-btn">
@@ -81,7 +86,15 @@
                                             <path d="M23.905 7.173a1.336 1.336 0 0 0-2.079 1.679 5.33 5.33 0 0 1 0 6.315 1.333 1.333 0 0 0 1.04 2.171 1.332 1.332 0 0 0 1.039-.492 7.994 7.994 0 0 0 0-9.673zM18.163.178a1.332 1.332 0 0 0-1.333 0l-8.62 5.93H1.55A1.332 1.332 0 0 0 .217 7.438v9.14a1.332 1.332 0 0 0 1.332 1.332H8.21l8.54 5.862c.234.152.508.23.786.227a1.332 1.332 0 0 0 1.333-1.332V1.35a1.331 1.331 0 0 0-.706-1.173zm-1.959 19.958-6.795-4.663c-.224-.15-.489-.23-.76-.226H2.882V8.772H8.65c.27.003.535-.076.76-.227l6.794-4.663v16.254z" />
                                         </svg>
                                     </button>
-                                    <p id="timer" class="video__timer">0:00/8:09</p>
+                                    <button id="volume-off" class="video__volume-btn hidden">
+<svg viewBox="0 0 30 26"fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.946.846a1.333 1.333 0 0 0-1.332 0l-8.62 5.928H1.332A1.332 1.332 0 0 0 0 8.107v9.14a1.332 1.332 0 0 0 1.332 1.331h6.662l8.54 5.863c.234.15.507.23.786.226a1.333 1.333 0 0 0 1.332-1.332V2.018a1.333 1.333 0 0 0-.706-1.172zm-1.959 19.957L9.194 16.14c-.224-.15-.49-.23-.76-.226H2.665V9.439h5.768c.27.003.536-.076.76-.227l6.795-4.663v16.254z" />
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.563 8.329a1.5 1.5 0 0 1 2.108.234l1.83 2.286 1.828-2.286a1.5 1.5 0 1 1 2.342 1.874l-2.25 2.813 2.25 2.813a1.5 1.5 0 0 1-2.342 1.874L25.5 15.651l-1.829 2.286a1.5 1.5 0 0 1-2.342-1.874l2.25-2.813-2.25-2.813a1.5 1.5 0 0 1 .234-2.108z" />
+</svg>
+
+                                    </button>
+
+                                    <p id="timer" class="video__timer">0:00 / 0:00</p>
                                 </div>
                                 <div class="video__controls-right">
                                     <button id="settings" class="video__settings-btn">
@@ -173,49 +186,23 @@
             <div class="main__suggestions">
                 <div class="main__video-item video-item">
                     <div class="video-item__preview">
-                        <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        <a href="./video.html">
+                            <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        </a>
                         <time class="video-item__time">16:10</time>
                     </div>
                     <div class="video-item__footer">
                         <div class="video-item__pfp-wrapper">
-                            <a href="" class="video-item__pfp-link">
-                                <img src="" alt="" class="video-item__pfp">
+                            <a href="./channel.html" class="video-item__pfp-link">
+                                <img src="./assets/img/png/test-pfp.png" alt="" class="video-item__pfp">
                             </a>
                         </div>
                         <div class="video-item__descr-wrapper">
-                            <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
-                            <p class="video-item__username">
-                                <a href="" class="video-item__username-link">vanzai</a>
-                            </p>
-                            <p class="video-item__statistics">
-                                87 тыс. просмотров | 2 дня назад
-                            </p>
-                        </div>
-
-                        <div class="video-item__more">
-                            <button class="video-item__more-btn">
-                                    <svg width="4" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 16a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
-                                    </svg>
-                                </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="main__video-item video-item">
-                    <div class="video-item__preview">
-                        <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
-                        <time class="video-item__time">16:10</time>
-                    </div>
-                    <div class="video-item__footer">
-                        <div class="video-item__pfp-wrapper">
-                            <a href="" class="video-item__pfp-link">
-                                <img src="" alt="" class="video-item__pfp">
+                            <a href="./video.html">
+                                <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
                             </a>
-                        </div>
-                        <div class="video-item__descr-wrapper">
-                            <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
                             <p class="video-item__username">
-                                <a href="" class="video-item__username-link">vanzai</a>
+                                <a href="./channel.html" class="video-item__username-link">vanzai</a>
                             </p>
                             <p class="video-item__statistics">
                                 87 тыс. просмотров | 2 дня назад
@@ -234,19 +221,23 @@
 
                 <div class="main__video-item video-item">
                     <div class="video-item__preview">
-                        <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        <a href="./video.html">
+                            <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        </a>
                         <time class="video-item__time">16:10</time>
                     </div>
                     <div class="video-item__footer">
                         <div class="video-item__pfp-wrapper">
-                            <a href="" class="video-item__pfp-link">
-                                <img src="" alt="" class="video-item__pfp">
+                            <a href="./channel.html" class="video-item__pfp-link">
+                                <img src="./assets/img/png/test-pfp.png" alt="" class="video-item__pfp">
                             </a>
                         </div>
                         <div class="video-item__descr-wrapper">
-                            <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
+                            <a href="./video.html">
+                                <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
+                            </a>
                             <p class="video-item__username">
-                                <a href="" class="video-item__username-link">vanzai</a>
+                                <a href="./channel.html" class="video-item__username-link">vanzai</a>
                             </p>
                             <p class="video-item__statistics">
                                 87 тыс. просмотров | 2 дня назад
@@ -265,19 +256,23 @@
 
                 <div class="main__video-item video-item">
                     <div class="video-item__preview">
-                        <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        <a href="./video.html">
+                            <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        </a>
                         <time class="video-item__time">16:10</time>
                     </div>
                     <div class="video-item__footer">
                         <div class="video-item__pfp-wrapper">
-                            <a href="" class="video-item__pfp-link">
-                                <img src="" alt="" class="video-item__pfp">
+                            <a href="./channel.html" class="video-item__pfp-link">
+                                <img src="./assets/img/png/test-pfp.png" alt="" class="video-item__pfp">
                             </a>
                         </div>
                         <div class="video-item__descr-wrapper">
-                            <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
+                            <a href="./video.html">
+                                <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
+                            </a>
                             <p class="video-item__username">
-                                <a href="" class="video-item__username-link">vanzai</a>
+                                <a href="./channel.html" class="video-item__username-link">vanzai</a>
                             </p>
                             <p class="video-item__statistics">
                                 87 тыс. просмотров | 2 дня назад
@@ -293,50 +288,114 @@
                         </div>
                     </div>
                 </div>
+                <div class="main__video-item video-item">
+                    <div class="video-item__preview">
+                        <a href="./video.html">
+                            <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        </a>
+                        <time class="video-item__time">16:10</time>
+                    </div>
+                    <div class="video-item__footer">
+                        <div class="video-item__pfp-wrapper">
+                            <a href="./channel.html" class="video-item__pfp-link">
+                                <img src="./assets/img/png/test-pfp.png" alt="" class="video-item__pfp">
+                            </a>
+                        </div>
+                        <div class="video-item__descr-wrapper">
+                            <a href="./video.html">
+                                <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
+                            </a>
+                            <p class="video-item__username">
+                                <a href="./channel.html" class="video-item__username-link">vanzai</a>
+                            </p>
+                            <p class="video-item__statistics">
+                                87 тыс. просмотров | 2 дня назад
+                            </p>
+                        </div>
+
+                        <div class="video-item__more">
+                            <button class="video-item__more-btn">
+                                    <svg width="4" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 16a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                                    </svg>
+                                </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__video-item video-item">
+                    <div class="video-item__preview">
+                        <a href="./video.html">
+                            <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        </a>
+                        <time class="video-item__time">16:10</time>
+                    </div>
+                    <div class="video-item__footer">
+                        <div class="video-item__pfp-wrapper">
+                            <a href="./channel.html" class="video-item__pfp-link">
+                                <img src="./assets/img/png/test-pfp.png" alt="" class="video-item__pfp">
+                            </a>
+                        </div>
+                        <div class="video-item__descr-wrapper">
+                            <a href="./video.html">
+                                <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
+                            </a>
+                            <p class="video-item__username">
+                                <a href="./channel.html" class="video-item__username-link">vanzai</a>
+                            </p>
+                            <p class="video-item__statistics">
+                                87 тыс. просмотров | 2 дня назад
+                            </p>
+                        </div>
+
+                        <div class="video-item__more">
+                            <button class="video-item__more-btn">
+                                    <svg width="4" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 16a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                                    </svg>
+                                </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__video-item video-item">
+                    <div class="video-item__preview">
+                        <a href="./video.html">
+                            <img src="./assets/img/png/preview.png" alt="" class="video-item__img">
+                        </a>
+                        <time class="video-item__time">16:10</time>
+                    </div>
+                    <div class="video-item__footer">
+                        <div class="video-item__pfp-wrapper">
+                            <a href="./channel.html" class="video-item__pfp-link">
+                                <img src="./assets/img/png/test-pfp.png" alt="" class="video-item__pfp">
+                            </a>
+                        </div>
+                        <div class="video-item__descr-wrapper">
+                            <a href="./video.html">
+                                <h3 class="video-item__title">ПОВТОРИЛ САМЫЕ РЕДКИЕ БУРГЕРЫ В МИРЕ ИЗ McDonal...</h3>
+                            </a>
+                            <p class="video-item__username">
+                                <a href="./channel.html" class="video-item__username-link">vanzai</a>
+                            </p>
+                            <p class="video-item__statistics">
+                                87 тыс. просмотров | 2 дня назад
+                            </p>
+                        </div>
+
+                        <div class="video-item__more">
+                            <button class="video-item__more-btn">
+                                    <svg width="4" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 16a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                                    </svg>
+                                </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
 
-    <script>
-        let playing = false;
-        const video = document.getElementById('video')
-        const controlsWrap = document.getElementById('controls-wrap')
-        const playBtn = document.getElementById('play')
-        const playBtnSmall = document.getElementById('play-small')
-        const stopBtnSmall = document.getElementById('stop-small')
-        const fullscreen = document.getElementById('fullscreen')
-
-
-        function switchState() {
-            playBtn.classList.toggle('hidden')
-            playBtnSmall.classList.toggle('hidden')
-            stopBtnSmall.classList.toggle('hidden')
-            if (playing) {
-                video.pause()
-                playing = false
-            } else {
-                video.play()
-                playing = true
-            }
-        }
-
-        video.addEventListener('ended', () => {
-            video.pause()
-            playing = false
-        })
-        controlsWrap.addEventListener('click', () => {
-            switchState()
-        })
-        document.addEventListener('keyup', (e) => {
-            if (e.code === 'Space') {
-                e.preventDefault();
-                switchState()
-            }
-        })
-        fullscreen.addEventListener('click', (e) => {
-            e.preventDefault();
-            video.requestFullscreen()
-        })
+    <script src="./assets/scripts/video-player.js">
     </script>
 </body>
 

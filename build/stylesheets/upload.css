@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: #F2F7FF;
+}
+
 body {
   background-color: #262B39;
   color: #F2F7FF;
@@ -217,6 +222,7 @@ body {
   padding: 2rem;
 }
 .main__title {
+  margin-left: 2rem;
   font-size: 2rem;
   margin-bottom: 2rem;
 }
@@ -225,23 +231,46 @@ body {
   background-color: #212430;
   border-radius: 1rem;
 }
+.main__progress-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.main__progress-percent {
+  color: #5093F6;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-left: 2rem;
+}
 .main__progress {
   width: 100%;
+  -webkit-appearance: none;
+  height: 0.5rem;
+  border-radius: rem;
 }
 .main__progress::-webkit-progress-bar {
+  border-radius: 1rem;
   background-color: #4E76B3;
 }
 .main__progress::-webkit-progress-value {
-  background-color: #4E76B3;
+  background: #5093F6;
+  border-radius: 1rem;
 }
 .main__video {
-  width: 50rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  position: relative;
+  min-width: 50rem;
   height: 30rem;
   background: black;
+  margin-bottom: 2rem;
 }
 .main__edit-video {
-  width: 2rem;
-  height: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4rem;
+  height: 4rem;
+  transform: translate(-50%, -50%);
   background: none;
   border: none;
 }
@@ -250,6 +279,42 @@ body {
 }
 .main__video-edit-wrapper {
   display: flex;
+}
+.main__edit-video-form {
+  padding: 2rem 2rem 0 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: #262B39;
+  width: 100%;
+}
+.main__edit-video-input {
+  padding: 1rem;
+  background-color: #212430;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  color: #F2F7FF;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.main__edit-video-input::placeholder {
+  color: #4D5777;
+}
+.main__edit-video-textarea {
+  height: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #212430;
+  border: none;
+  outline: none;
+  color: #F2F7FF;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.main__edit-video-textarea::placeholder {
+  color: #4D5777;
 }
 
 /*# sourceMappingURL=upload.css.map */

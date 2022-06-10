@@ -10,6 +10,13 @@
   opacity: 0;
   cursor: default;
 }
+.video__pauseable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90%;
+}
 .video__controls {
   opacity: 0;
   position: absolute;
@@ -44,12 +51,22 @@
   padding: 0 1rem;
 }
 .video__progress {
+  cursor: pointer;
   width: 100%;
   height: 0.5rem;
   margin-bottom: 1rem;
   border: none;
-  background: red;
+  background: #4E76B3;
+  border-radius: 2rem;
   height: 7px;
+  -webkit-appearance: none !important;
+}
+.video__progress::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  background: #5093F6;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 2rem;
 }
 .video__controls-left {
   display: flex;
@@ -76,6 +93,7 @@
   border: none;
   outline: none;
   margin-left: 1rem;
+  margin-left: 0;
 }
 .video__play-btn-small svg {
   fill: #5093F6;

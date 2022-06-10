@@ -18,6 +18,9 @@
   border-radius: 1rem;
   margin-bottom: 1rem;
 }
+.video-item img {
+  border-radius: 1rem;
+}
 .video-item__img {
   position: absolute;
   border-radius: inherit;
