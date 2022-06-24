@@ -9,6 +9,10 @@
     flex-direction: column;
     align-items: center;
     padding-top: 8rem;
+    &__error{
+        color: $error;
+         margin-bottom: 1rem;
+    }
     &__wrapper {
         padding: 2rem;
         background-color: $light_bg;
@@ -18,7 +22,7 @@
     }
     &__logotype {
         height: 8rem;
-        margin-bottom: 8rem;
+        margin-bottom: 4rem;
     }
     &__form {
         display: flex;

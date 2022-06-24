@@ -35,8 +35,13 @@
     &__profile-title {
         font-size: 2rem;
         margin-bottom: 1rem;
+        background: $dark_bg;
+        border: none;
+        color: $main200;
+        padding: 1rem;
     }
     &__edit-btn-small {
+        cursor: pointer;
         margin-left: 1rem;
         background: none;
         border: none;
@@ -57,6 +62,7 @@
         border-radius: 4rem;
     }
     &__edit-btn {
+        cursor: pointer;
         position: absolute;
         background: none;
         border: none;

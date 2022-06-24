@@ -139,9 +139,30 @@ body {
   color: #4D5777;
   border-bottom: 0.125rem solid #4D5777;
 }
+.header__categories-item a {
+  color: #4D5777;
+}
 .header__categories-item.active {
   color: #80B2FF;
   border-color: #80B2FF;
+}
+.header__categories-item.active a {
+  color: #80B2FF;
+}
+.header__profile {
+  margin-left: 2rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__profile-pfp {
+  height: 100%;
+  border-radius: 0.75rem;
+}
+.header__profile-link {
+  height: 100%;
+  width: auto;
 }
 
 .video-item {

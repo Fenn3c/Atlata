@@ -1,18 +1,23 @@
 @import './colors';
+
 .header {
     width: 100%;
     position: relative;
+
     &__logotype {
         width: 4rem;
         margin-right: 2rem;
     }
+
     &__top-header {
         display: flex;
         width: 100%;
         padding: 2rem;
         height: 8rem;
     }
+
     background-color: $light_bg;
+
     &__search {
         display: flex;
         align-items: center;
@@ -20,10 +25,12 @@
         width: 100%;
         border-radius: 1rem;
         background-color: $dark_bg;
+
         &-label {
             margin: 0 2rem 0 1rem;
         }
     }
+
     &__input {
         padding: 1.25rem;
         border-radius: inherit;
@@ -34,26 +41,32 @@
         border: none;
         color: $main200;
     }
-     ::placeholder {
+
+    ::placeholder {
         color: $lighter_bg;
     }
+
     &__options-btn {
         background: none;
         outline: none;
         border: none;
         cursor: pointer;
+
         svg {
             height: 2rem;
         }
     }
+
     &__authentication {
         margin-left: 4rem;
         display: flex;
     }
+
     &__left {
         margin-left: 25rem;
         display: flex;
     }
+
     &__login-btn {
         display: flex;
         justify-content: center;
@@ -66,19 +79,23 @@
         outline: none;
         border: none;
         color: $main200;
+
         svg {
             margin-right: 0.5rem;
             fill: $main200;
         }
+
         &:hover {
             cursor: pointer;
             background-color: $main600;
             color: $main500;
+
             svg {
                 fill: $main500;
             }
         }
     }
+
     &__categories-wrapper {
         height: 4rem;
         width: 100%;
@@ -87,9 +104,11 @@
         position: relative;
         overflow-x: scroll;
     }
-     ::-webkit-scrollbar {
+
+    ::-webkit-scrollbar {
         display: none;
     }
+
     &__categories {
         position: absolute;
         top: 50%;
@@ -98,15 +117,45 @@
         transform: translateY(-50%);
         list-style: none;
     }
+
     &__categories-item {
         white-space: nowrap;
         padding: 0.5em 2rem;
         font-weight: bold;
         color: $lighter_bg;
+
+        a {
+            color: $lighter_bg;
+        }
+
         border-bottom: 0.125rem solid $lighter_bg;
+
         &.active {
+            a {
+                color: $main400
+            }
+
             color: $main400;
             border-color: $main400;
         }
     }
+
+    &__profile {
+        margin-left: 2rem;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__profile-pfp {
+        height: 100%;
+        border-radius: 0.75rem;
+    }
+
+    &__profile-link {
+        height: 100%;
+        width: auto;
+    }
+
 }
