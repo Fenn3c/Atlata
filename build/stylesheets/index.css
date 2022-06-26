@@ -73,6 +73,9 @@
   color: #F2F7FF;
   text-decoration: none;
 }
+.video-item__more {
+  margin-left: auto;
+}
 .video-item__more-btn {
   background: none;
   border: none;
@@ -83,14 +86,10 @@
 }
 .video-item__footer {
   display: flex;
-  justify-content: space-between;
   width: 100%;
 }
 .video-item__footer * {
   font-size: 0.75rem;
-}
-.video-item .video-item__pfp-wrapper {
-  flex-grow: 1;
 }
 .video-item__pfp {
   width: 4rem;
@@ -98,6 +97,9 @@
   border-radius: 1rem;
   margin-right: 1rem;
   background: #4D5777;
+}
+.video-item__item__pfp-link {
+  font-size: 0.5rem;
 }
 .video-item__more {
   margin-top: 1rem;

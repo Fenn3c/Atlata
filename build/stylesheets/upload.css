@@ -385,6 +385,7 @@ body {
 }
 .main__video-thumbnail {
   height: 100%;
+  width: 100%;
 }
 
 /*# sourceMappingURL=upload.css.map */

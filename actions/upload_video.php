@@ -13,7 +13,7 @@ if (isset($_FILES['video'])) {
         $thumbnail =getThumbnail('../data/video/'.$name); 
         echo $thumbnail;
         $db = new DB();
-        $id_video = $db->saveRawVideo($_SESSION['id_user'],$duration,$thumbnail);
+        $id_video = $db->saveRawVideo($_SESSION['id_user'],$duration,$thumbnail, $name);
         $_SESSION['UPLOADING_VIDEO'] = $id_video;
     } else {
         echo $can_upload;

@@ -4,6 +4,7 @@
 @import './header.scss';
 @import './video-item.scss';
 @import './video-player.scss';
+
 .header {
     margin-bottom: 2rem;
 }
@@ -11,6 +12,7 @@
 .video-item {
     width: 20rem;
     margin-bottom: 2rem;
+
     &__more {
         margin-top: 1.5rem;
     }
@@ -20,48 +22,78 @@
     display: flex;
     width: 100%;
     padding: 0 2rem;
+
     &__video-container {
         width: 100%;
     }
+
     &__suggestions {
         margin-left: 4rem;
     }
+
     &__video {
         border-radius: 0.5rem;
         width: 100%;
         margin-bottom: 2rem;
     }
+
+    &__rating-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
+    }
+
     &__video-title {
         font-size: 2rem;
         margin-bottom: 1rem;
     }
+
     &__video-statistics {
         font-weight: bold;
         font-size: 1rem;
         margin-bottom: 1rem;
     }
+
+    &__video-rating {
+        margin-left: auto;
+        margin-right: 2rem;
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-right: 1rem;
+        }
+    }
+
     &__video-description {
         margin-bottom: 2rem;
     }
+
     &__channel {
         display: flex;
         align-items: center;
         margin-bottom: 4rem;
     }
+
     &__channel-img {
         width: 5rem;
         border-radius: 1.5rem;
     }
+
     &__channel-wrap {
         margin-left: 1rem;
     }
+
     &__channel-title {
         font-size: 1.5rem;
         margin-bottom: 0.25rem;
     }
+
     &__subscribe {
         margin-left: 1rem;
     }
+
     &__subscribe-btn {
         cursor: pointer;
         padding: 0.75rem 2rem;
@@ -71,11 +103,13 @@
         border: none;
         outline: none;
         border-radius: 0.5rem;
+
         &:hover {
             background-color: $main600;
             color: $main500;
         }
     }
+
     &__hr {
         display: block;
         height: 0.25rem;
@@ -84,13 +118,16 @@
         border: none;
         margin-bottom: 4rem;
     }
+
     &__comments {
         width: 100%;
     }
+
     &__comments-title {
         font-size: 2rem;
         margin-bottom: 2rem;
     }
+
     &__send-comment {
         margin-bottom: 4rem;
         height: 4rem;
@@ -98,16 +135,19 @@
         display: flex;
         align-items: center;
     }
+
     &__send-comment-pfp {
         height: 100%;
         border-radius: 1rem;
     }
+
     &__send-comment-form {
         margin-left: 2rem;
         width: 100%;
         display: flex;
         height: 100%;
     }
+
     &__send-comment-input {
         padding: 1rem;
         height: 100%;
@@ -117,10 +157,12 @@
         outline: none;
         border-radius: 1rem;
         color: $main200;
+
         &::placeholder {
             color: $lighter_bg;
         }
     }
+
     &__send-comment-btn {
         margin-left: 2rem;
         cursor: pointer;
@@ -132,45 +174,55 @@
         padding: 0 2rem;
         border: none;
         outline: none;
+
         &:hover {
             background-color: $main600;
             color: $main500;
         }
     }
+
     &__comment {
         height: 4rem;
         display: flex;
         margin-bottom: 4rem;
     }
+
     &__comment-pfp {
         height: 100%;
         border-radius: 1rem;
         margin-right: 2rem;
     }
+
     &__comment-up {
         display: flex;
         margin-bottom: 0.5rem;
     }
+
     &__comment-content {
         font-size: 1rem;
         margin-bottom: 1rem;
     }
+
     &__comment-likes {
         display: flex;
         align-items: center;
     }
+
     &__comment-likes-count {
         font-size: 1rem;
         margin-left: 1rem;
     }
+
     &__comment-author {
         font-size: 1rem;
         font-weight: bold;
     }
+
     &__comment-date {
         margin-left: 1rem;
         color: $lighter_bg;
     }
+
     &__comment-like-ico {
         cursor: pointer;
     }

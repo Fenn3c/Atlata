@@ -119,6 +119,7 @@ if (isset($_SESSION['id_user'])) {
                             <?php else:?>
                         <img class="main__pfp" src="./assets/img/png/default-pfp.png" alt="">
                         <?php endif;?>
+
                     </div>
                     <div class="main__edit-wrapper">
                         <div class="main__profile-title-wrapper">

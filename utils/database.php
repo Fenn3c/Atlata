@@ -9,7 +9,7 @@ class DB
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => true
+            PDO::ATTR_EMULATE_PREPARES => true,
         ];
 
         $this->db =  new PDO($dsn, $db_settings['USER'], $db_settings['PASSWORD'], $options);
@@ -77,6 +77,14 @@ class DB
             'id_user' => $id_user
         ));
     }
+    public function editBanner($id_user, $banner)
+    {
+        $query = $this->db->prepare('UPDATE users SET banner = :banner WHERE id_user=:id_user');
+        $query->execute(array(
+            'banner' => $banner,
+            'id_user' => $id_user
+        ));
+    }
     //logs
     public function createLog($id_user, $event, $ip_address, $user_agent)
     {
@@ -97,16 +105,19 @@ class DB
         return $query->fetchAll();
     }
     //videos
-    public function saveRawVideo($id_user, $duration, $thumbnail){
-        $query = $this->db->prepare("INSERT INTO videos (id_user, duration, thumbnail) values (:id_user, :duration, :thumbnail)");
-        $query->execute(array( 
+    public function saveRawVideo($id_user, $duration, $thumbnail, $file)
+    {
+        $query = $this->db->prepare("INSERT INTO videos (id_user, duration, thumbnail, file) values (:id_user, :duration, :thumbnail, :file)");
+        $query->execute(array(
             "id_user" => $id_user,
             "duration" => $duration,
-            "thumbnail" => $thumbnail
+            "thumbnail" => $thumbnail,
+            "file" => $file
         ));
         return $this->db->lastInsertId();
     }
-    public function getVideoById($id_video){
+    public function getVideoById($id_video)
+    {
         $query = $this->db->prepare("SELECT * FROM videos_with_data WHERE id_video = :id_video");
         $query->execute(array(
             "id_video" => $id_video
@@ -114,7 +125,8 @@ class DB
         return $query->fetch();
     }
 
-    public function completeUploading($id_video, $title, $description, $id_category){
+    public function completeUploading($id_video, $title, $description, $id_category)
+    {
         $query = $this->db->prepare('UPDATE videos SET title = :title, description = :description, id_category = :id_category WHERE id_video=:id_video');
         $query->execute(array(
             "id_video" => $id_video,
@@ -133,4 +145,144 @@ class DB
         ));
     }
 
+    public function getVideos()
+    {
+        $query = $this->db->prepare("SELECT * FROM videos_with_data");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getVideosByChannel($id_channel)
+    {
+        $query = $this->db->prepare("SELECT * FROM videos_with_data WHERE id_user = :id_user");
+        $query->execute(array(
+            "id_user" => $id_channel
+        ));
+        return $query->fetchAll();
+    }
+    
+    public function getVideosByCategory($id_category)
+    {
+        $query = $this->db->prepare("SELECT * FROM videos_with_data WHERE id_category = :id_category");
+        $query->execute(array(
+            "id_category" => $id_category
+        ));
+        return $query->fetchAll();
+    }
+    public function getSuggestions($id_video)
+    {
+        $query = $this->db->prepare("SELECT * FROM videos_with_data WHERE id_video != :id_video");
+        $query->execute(array(
+            "id_video" => $id_video
+        ));
+        return $query->fetchAll();
+    }
+    //video rating
+    public function getRating($id_user, $id_video)
+    {
+        $query = $this->db->prepare("SELECT * FROM video_rating WHERE id_user = :id_user AND id_video = :id_video");
+        $query->execute(array(
+            "id_user" => $id_user,
+            "id_video" => $id_video
+        ));
+        return $query->fetch();
+    }
+    public function setRating($id_user, $id_video, $rating)
+    {
+        $query = $this->db->prepare("INSERT INTO video_rating (id_user, id_video, rating) VALUES (:id_user, :id_video, :rating)");
+        $query->execute(array(
+            "id_user" => $id_user,
+            "id_video" => $id_video,
+            "rating" => $rating
+        ));
+    }
+    public function updateRating($id_video_rating, $id_user, $id_video, $rating)
+    {
+        $query = $this->db->prepare("UPDATE video_rating SET id_user=:id_user, id_video=:id_video, rating=:rating WHERE id_video_rating = :id_video_rating");
+        $query->execute(array(
+            "id_video_rating" => $id_video_rating,
+            "id_user" => $id_user,
+            "id_video" => $id_video,
+            "rating" => $rating
+        ));
+    }
+    
+    //comments rating
+    public function getCommentRating($id_user, $id_comment)
+    {
+        $query = $this->db->prepare("SELECT * FROM comments_rating WHERE id_user = :id_user AND id_comment = :id_comment");
+        $query->execute(array(
+            "id_user" => $id_user,
+            "id_comment" => $id_comment
+        ));
+        return $query->fetch();
+    }
+    public function setCommentRating($id_user, $id_comment, $rating)
+    {
+        $query = $this->db->prepare("INSERT INTO comments_rating (id_user, id_comment, rating) VALUES (:id_user, :id_comment, :rating)");
+        $query->execute(array(
+            "id_user" => $id_user,
+            "id_comment" => $id_comment,
+            "rating" => $rating
+        ));
+    }
+    public function updateCommentRating($id_comment_rating, $id_user, $id_comment, $rating)
+    {
+        $query = $this->db->prepare("UPDATE comments_rating SET id_user=:id_user, id_comment=:id_comment, rating=:rating WHERE id_comment_rating = :id_comment_rating");
+        $query->execute(array(
+            "id_comment_rating" => $id_comment_rating,
+            "id_user" => $id_user,
+            "id_comment" => $id_comment,
+            "rating" => $rating
+        ));
+    }
+
+
+
+    //subscribes
+    public function subscribtionsCount($id_user){
+        $query = $this->db->prepare("SELECT COUNT(*) as num FROM subscribes WHERE id_channel = :id_channel");
+        $query->execute(array(
+            "id_channel" => $id_user
+        ));
+        return $query->fetch()['num'];
+
+    }
+    public function isSubscribed($id_user, $id_channel)
+    {
+        $query = $this->db->prepare("SELECT * FROM subscribes WHERE id_channel = :id_channel AND id_subscriber = :id_subscriber");
+        $query->execute(array(
+            "id_channel" => $id_channel,
+            "id_subscriber" => $id_user
+        ));
+        return $query->fetch();
+    }
+    public function subscribe($id_user, $id_channel)
+    {
+        $query = $this->db->prepare("INSERT INTO subscribes (id_channel, id_subscriber) VALUES (:id_channel, :id_subscriber)");
+        $query->execute(array(
+            "id_channel" => $id_channel,
+            "id_subscriber" => $id_user,
+        ));
+    }
+
+    //comments
+    public function getComments($id_video)
+    {
+        $query = $this->db->prepare("SELECT * FROM comments_with_data WHERE id_video = :id_video");
+        $query->execute(array(
+            "id_video" => $id_video
+        ));
+        return $query->fetchAll();
+    }
+    public function sendComment($id_user, $id_video, $content)
+    {
+        $query = $this->db->prepare("INSERT INTO comments (id_user, id_video, content) VALUES (:id_user, :id_video, :content)");
+        $query->execute(array(
+            "id_user" => $id_user,
+            "id_video" => $id_video,
+            "content" => $content
+        ));
+        return $this->db->lastInsertId();
+    }
 }
