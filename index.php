@@ -14,6 +14,12 @@ if (isset($_GET['category'])) {
 } else {
     $videos = $db->getVideos();
 }
+if(isset($_GET['search'])){
+    $search = strip_tags($_GET['search']);
+    if($search != ''){
+        $videos = $db->searchVideos($search);
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -135,8 +141,16 @@ if (isset($_GET['category'])) {
         </header>
 
         <main class="main">
-            <div class="main__videos-container">
+            <?php if(isset($search)):
+                if(count($videos) > 0):
+                ?>
+            <h1 class="main__search-text">Результаты поиска по вашему запросу: <?=$search?></h1>
+            <?php else: ?>
 
+            <h1 class="main__search-text">По вашему запросу ничего не найдено :(</h1>
+            <?php endif; ?>
+            <?php endif; ?>
+            <div class="main__videos-container">
                 <?php foreach ($videos as $video):?>
                 <div class="main__video-item video-item">
                     <div class="video-item__preview">

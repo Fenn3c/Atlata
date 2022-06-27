@@ -171,9 +171,25 @@ class DB
     }
     public function getSuggestions($id_video)
     {
-        $query = $this->db->prepare("SELECT * FROM videos_with_data WHERE id_video != :id_video");
+        $query = $this->db->prepare("SELECT * FROM videos_with_data WHERE id_video != :id_video LIMIT 0, 10");
         $query->execute(array(
             "id_video" => $id_video
+        ));
+        return $query->fetchAll();
+    }
+    
+    public function getVideosByUser($id_user){
+        $query = $this->db->prepare("SELECT * FROM videos_with_data WHERE id_user = :id_user");
+        $query->execute(array(
+            "id_user" => $id_user
+        ));
+        return $query->fetchAll();
+    }
+
+    public function searchVideos($search){
+        $query = $this->db->prepare("SELECT * FROM videos_with_data WHERE title LIKE :search");
+        $query->execute(array(
+            "search" => "%$search%"
         ));
         return $query->fetchAll();
     }
@@ -292,5 +308,13 @@ class DB
             "content" => $content
         ));
         return $this->db->lastInsertId();
+    }
+    //views
+    public function addView($id_user, $id_video){
+        $query = $this->db->prepare("INSERT INTO views (id_user, id_video) VALUES (:id_user, :id_video)");
+        $query->execute(array(
+            "id_user" => $id_user,
+            "id_video" => $id_video,
+        ));
     }
 }

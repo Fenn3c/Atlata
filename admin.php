@@ -6,21 +6,21 @@ $db = new DB();
 if (isset($_SESSION['id_user'])) {
     $id_user = $_SESSION['id_user'];
     $user = $db->getUserById($id_user);
-    $videos = $db->getVideosByUser($id_user);
 }
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./build/stylesheets/studio.css">
-    <title>Мои видео</title>
+    <link rel="stylesheet" href="./build/stylesheets/admin.css">
+    <title>Профиль</title>
 </head>
 
-<body class="light">
+<body>
     <nav class="navbar">
         <a href="./index.php">
             <img src="./assets/img/svg/logotype.svg" alt="" class="navbar__logotype">
@@ -39,29 +39,29 @@ if (isset($_SESSION['id_user'])) {
                 </li>
             </a>
             <a href="./upload.php">
-            <li class="navbar__categories-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.24 10.6a.64.64 0 0 0-.64.64v7.2a.64.64 0 0 0 .64.64h.72a.8.8 0 0 1 0 1.6h-.72A2.24 2.24 0 0 1 8 18.44v-7.2A2.24 2.24 0 0 1 10.24 9h11.52A2.24 2.24 0 0 1 24 11.24v7.2a2.24 2.24 0 0 1-2.24 2.24h-.72a.8.8 0 0 1 0-1.6h.72a.64.64 0 0 0 .64-.64v-7.2a.64.64 0 0 0-.64-.64H10.24z" />
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.488 18.545a.8.8 0 0 1 1.024 0l4.32 3.6a.8.8 0 0 1-.512 1.415h-8.64a.8.8 0 0 1-.512-1.415l4.32-3.6zM13.89 21.96h4.22L16 20.2l-2.11 1.759z" />
-                </svg>
-                
-                
-            </li>
-        </a>
-        <a href="./studio.php">
-            <li class="navbar__categories-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M23 8H8.77778C7.79733 8 7 8.79733 7 9.77778V22.2222C7 23.2027 7.79733 24 8.77778 24H23C23.9804 24 24.7778 23.2027 24.7778 22.2222V9.77778C24.7778 8.79733 23.9804 8 23 8ZM23.0009 13.3333C23 13.3333 23 13.3333 23.0009 13.3333H22.5867L20.216 9.77778H23L23.0009 13.3333ZM13.6978 13.3333L11.3271 9.77778H13.6356L16.0062 13.3333H13.6978ZM18.1422 13.3333L15.7716 9.77778H18.08L20.4507 13.3333H18.1422ZM8.77778 9.77778H9.19111L11.5618 13.3333H8.77778V9.77778ZM8.77778 22.2222V15.1111H23L23.0018 22.2222H8.77778Z" />
-            </svg>
-        </li>
-    </a>
+                <li class="navbar__categories-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.24 10.6a.64.64 0 0 0-.64.64v7.2a.64.64 0 0 0 .64.64h.72a.8.8 0 0 1 0 1.6h-.72A2.24 2.24 0 0 1 8 18.44v-7.2A2.24 2.24 0 0 1 10.24 9h11.52A2.24 2.24 0 0 1 24 11.24v7.2a2.24 2.24 0 0 1-2.24 2.24h-.72a.8.8 0 0 1 0-1.6h.72a.64.64 0 0 0 .64-.64v-7.2a.64.64 0 0 0-.64-.64H10.24z" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.488 18.545a.8.8 0 0 1 1.024 0l4.32 3.6a.8.8 0 0 1-.512 1.415h-8.64a.8.8 0 0 1-.512-1.415l4.32-3.6zM13.89 21.96h4.22L16 20.2l-2.11 1.759z" />
+                    </svg>
+
+
+                </li>
+            </a>
+            <a href="./studio.php">
+                <li class="navbar__categories-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23 8H8.77778C7.79733 8 7 8.79733 7 9.77778V22.2222C7 23.2027 7.79733 24 8.77778 24H23C23.9804 24 24.7778 23.2027 24.7778 22.2222V9.77778C24.7778 8.79733 23.9804 8 23 8ZM23.0009 13.3333C23 13.3333 23 13.3333 23.0009 13.3333H22.5867L20.216 9.77778H23L23.0009 13.3333ZM13.6978 13.3333L11.3271 9.77778H13.6356L16.0062 13.3333H13.6978ZM18.1422 13.3333L15.7716 9.77778H18.08L20.4507 13.3333H18.1422ZM8.77778 9.77778H9.19111L11.5618 13.3333H8.77778V9.77778ZM8.77778 22.2222V15.1111H23L23.0018 22.2222H8.77778Z" />
+                    </svg>
+                </li>
+            </a>
 
         </ul>
     </nav>
     <div class="container">
 
-<header class="header">
+        <header class="header">
             <div class="header__top-header">
 
-  <form class="header__search" action="index.php">
+                <form class="header__search" action="index.php">
                     <label for="search" class="header__search-label">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.1924 16.3103C12.356 17.616 10.0963 18.1841 7.86085 17.902C5.62544 17.6199 3.57757 16.5083 2.12309 14.7874C0.668612 13.0664 -0.0863192 10.8618 0.00791453 8.61051C0.102148 6.35916 1.03867 4.22538 2.63187 2.63204C4.22507 1.03871 6.35868 0.102111 8.60983 0.00786941C10.861 -0.0863722 13.0654 0.668621 14.7862 2.12322C16.507 3.57782 17.6185 5.62586 17.9006 7.86145C18.1826 10.097 17.6145 12.357 16.309 14.1935L23.5234 21.4065C23.6705 21.5436 23.7885 21.709 23.8704 21.8927C23.9523 22.0764 23.9963 22.2748 23.9998 22.4759C24.0034 22.677 23.9664 22.8767 23.891 23.0632C23.8157 23.2497 23.7036 23.4191 23.5614 23.5613C23.4192 23.7035 23.2498 23.8157 23.0633 23.891C22.8768 23.9663 22.6771 24.0033 22.476 23.9998C22.2749 23.9962 22.0766 23.9522 21.8929 23.8703C21.7092 23.7885 21.5439 23.6705 21.4068 23.5233L14.1924 16.3103ZM14.9771 8.98541C14.9771 7.39652 14.346 5.87272 13.2226 4.74921C12.0991 3.6257 10.5755 2.99452 8.9867 2.99452C7.39795 2.99452 5.87427 3.6257 4.75086 4.74921C3.62744 5.87272 2.99631 7.39652 2.99631 8.98541C2.99631 10.5743 3.62744 12.0981 4.75086 13.2216C5.87427 14.3451 7.39795 14.9763 8.9867 14.9763C10.5755 14.9763 12.0991 14.3451 13.2226 13.2216C14.346 12.0981 14.9771 10.5743 14.9771 8.98541Z" fill="#4D5777" />
@@ -88,8 +88,8 @@ if (isset($_SESSION['id_user'])) {
                         <a href="./profile.php">
                             <div class="header__profile">
                                 <?php if ($user['pfp']) : ?>
-                                    <img class="header__profile-pfp" src="./data/pfp/<?=$user['pfp']?>" alt="">
-                                <?php else : ?> 
+                                    <img class="header__profile-pfp" src="./data/pfp/<?= $user['pfp'] ?>" alt="">
+                                <?php else : ?>
                                     <img class="header__profile-pfp" src="./assets/img/png/default-pfp.png" alt="">
                                 <?php endif; ?>
                             </div>
@@ -99,35 +99,27 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </header>
         <main class="main">
-            <h1 class="main__title">Мои видео</h1>
-            <div class="main__info-titles-wrapper">
-                <h3 class="main__info-title">Видео</h3>
-                <h3 class="main__info-title_center">Просмотры</h3>
-                <h3 class="main__info-title_center">Нравится</h3>
-                <h3 class="main__info-title_center">Комментарии</h3>
-            </div>
+            <h1 class="main__title">Панель администратора</h1>
             <div class="main__wrapper">
-                <?php foreach ($videos as $video): ?>
-                <div class="main__video-item">
-                    <div class="videos__video-item video-item">
-                        <div class="video-item__preview main__video-preview">
-                            <img src="./data/thumbnails/<?=$video['thumbnail']?>" alt="" class="video-item__img">
-                            <time class="video-item__time"><?=$video['duration']?></time>
-                        </div>
-                    </div>
-                    <div class="main__video-container">
-                        <p class="main__video-title">
-                          <?=$video['title']?>
-                        </p>
-                        <p class="main__video-description"><?=$video['description']?></p>
-                    </div>
-                </div>
-                <p class="main__statistics-item"><?=$video['views']?></p>
-                <p class="main__statistics-item"><?=$video['rating']?></p>
-                <p class="main__statistics-item"><?=$video['comments']?></p>
-                    <?php endforeach;?>
-
-
+                <h2 class="main__statistics">Количество пользователей на ресурсе: 123123</h2>
+                <h2 class="main__statistics">Количество несовершонолетних пользователей на ресурсе: 123123</h2>
+                <h2 class="main__statistics">Количество видео на ресурсе: 123123</h2>
+                <h2 class="main__statistics">Общее количество просмотров на ресурсе: 123123</h2>
+                <h1 class="main__title main__title_query">Сделать запрос</h1>
+            <form action="./actions/make_query">
+                <input type="text">
+                <button>Отправить</button>
+            </form>
+            <table>
+                <tr>
+                    <td>фвыфывфы</td>
+                    <td>asdsad</td>
+                </tr>
+                <tr>
+                    <td>фвыфывфы</td>
+                    <td>asdsad</td>
+                </tr>
+            </table>
             </div>
         </main>
     </div>

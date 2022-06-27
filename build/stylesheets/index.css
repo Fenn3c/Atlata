@@ -347,5 +347,9 @@ body {
 .main__video-item:nth-child(4n) {
   margin-right: 0;
 }
+.main__search-text {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
 
 /*# sourceMappingURL=index.css.map */

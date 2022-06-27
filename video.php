@@ -8,6 +8,9 @@ if (isset($_SESSION['id_user'])) {
     $user = $db->getUserById($id_user);
 }
 if (isset($_GET['video'])) {
+    if($id_user){
+        $db->addView($id_user, $_GET['video']);
+    }
     $id_video = strip_tags($_GET['video']);
     $video = $db->getVideoById($id_video);
     $suggestions = $db->getSuggestions($id_video);
