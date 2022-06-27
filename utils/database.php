@@ -265,6 +265,14 @@ class DB
             "id_subscriber" => $id_user,
         ));
     }
+    public function unsubscribe($id_user, $id_channel)
+    {
+        $query = $this->db->prepare("DELETE FROM subscribes WHERE id_channel = :id_channel AND id_subscriber = :id_subscriber");
+        $query->execute(array(
+            "id_channel" => $id_channel,
+            "id_subscriber" => $id_user,
+        ));
+    }
 
     //comments
     public function getComments($id_video)

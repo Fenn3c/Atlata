@@ -522,6 +522,10 @@ body {
   outline: none;
   border-radius: 0.5rem;
 }
+.main__subscribe-btn_unsubscribed {
+  background-color: #4D5777;
+  color: #212430;
+}
 .main__subscribe-btn:hover {
   background-color: #4E76B3;
   color: #5093F6;

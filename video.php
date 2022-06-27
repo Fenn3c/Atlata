@@ -164,8 +164,16 @@ if (isset($_GET['video'])) {
                         <p class="main__channel-subscriptions"><?= $video['subscribers'] ?> подпищиков</p>
                     </div>
                     <form class="main__subscribe" action="./actions/subscribe.php" method="post">
-                        <input type="hidden" name="video" value="<?= $video['id_video'] ?>" />
-                        <button name="channel" value="<?= $video['id_user'] ?>" class="main__subscribe-btn">Подписаться</button>
+                        <input type="hidden" name="channel" value="<?=$video['id_user']?>">
+                        <input type="hidden" name="back" value="../video.php?video=<?=$id_video?>">
+                    <?php
+                    $isSubscribed = $db->isSubscribed($_SESSION['id_user'], $video['id_user']); 
+                    if($isSubscribed):
+                    ?>
+                        <button class="main__subscribe-btn main__subscribe-btn_unsubscribed">Отписаться</button>
+                    <?php else: ?>
+                        <button class="main__subscribe-btn">Подписаться</button>
+                        <?php endif;?>
                     </form>
                     <div class="main__video-rating">
                         <form action="./actions/video_rating.php" method="post">

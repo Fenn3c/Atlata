@@ -4,8 +4,8 @@ require_once('../utils/database.php');
 require_once('../utils/logging.php');
 
 if (isset($_POST['login']) && isset($_POST['password'])) {
-    $login = $_POST['login'];
-    $password = $_POST['password'];
+    $login = strip_tags($_POST['login']);
+    $password = strip_tags($_POST['password']);
     if ($login != "" && $password != "") {
         $db = new DB();
         $user = $db->getUserByLogin($login);

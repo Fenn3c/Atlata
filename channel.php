@@ -90,9 +90,19 @@ if (isset($_GET['channel'])) {
                         <h3 class="main__channel-name"><?= $channel['login'] ?></h3>
                         <p class="main__subscribers"><?= $db->subscribtionsCount($channel['id_user']) ?> подпищиков</p>
                     </div>
-                    <form class="main__subscribe-form">
+                    <form class="main__subscribe-form" action="./actions/subscribe.php" method="post">
+                        <input type="hidden" name="channel" value="<?=$id_channel?>">
+                        <input type="hidden" name="back" value="../channel.php?channel=<?=$id_channel?>">
+                    <?php
+                    $isSubscribed = $db->isSubscribed($_SESSION['id_user'], $id_channel); 
+                    if($isSubscribed):
+                    ?>
+                        <button class="main__subscribe-btn main__subscribe-btn_unsubscribed">Отписаться</button>
+                    <?php else: ?>
                         <button class="main__subscribe-btn">Подписаться</button>
+                        <?php endif;?>
                     </form>
+
                 </div>
                 <div class="videos">
                     <?php foreach ($videos as $video) : ?>

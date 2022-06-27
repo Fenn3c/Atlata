@@ -103,7 +103,10 @@
         border: none;
         outline: none;
         border-radius: 0.5rem;
-
+            &_unsubscribed{
+                background-color: $lighter_bg;
+                color: $dark_bg;
+            }
         &:hover {
             background-color: $main600;
             color: $main500;
