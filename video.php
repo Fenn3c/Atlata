@@ -156,11 +156,13 @@ if (isset($_GET['video'])) {
                 <p class="main__video-statistics"><?= $video['views'] ?> просмотров <?= $video['date'] ?></p>
                 <p class="main__video-description"><?= $video['description'] ?></p>
                 <div class="main__channel">
-                    <?php if ($video['pfp']) : ?>
-                        <img src="./data/pfp/<?= $video['pfp'] ?>" alt="" class="main__channel-img">
-                    <?php else : ?>
-                        <img src="./assets/img/png/default-pfp.png" alt="" class="main__channel-img">
-                    <?php endif; ?>
+                    <a href="./channel.php?channel=<?= $video['id_user'] ?>">
+                        <?php if ($video['pfp']) : ?>
+                            <img src="./data/pfp/<?= $video['pfp'] ?>" alt="" class="main__channel-img">
+                        <?php else : ?>
+                            <img src="./assets/img/png/default-pfp.png" alt="" class="main__channel-img">
+                        <?php endif; ?>
+                    </a>
 
                     <div class="main__channel-wrap">
                         <h3 class="main__channel-title"><?= $video['login'] ?></h3>
@@ -219,9 +221,14 @@ if (isset($_GET['video'])) {
 
                     if (isset($id_user)) :
                         if ($user['pfp']) : ?>
-                            <img class="main__send-comment-pfp" src="./data/pfp/<?= $user['pfp'] ?>" alt="">
+                            <a href="./channel.php?channel=<?= $id_user ?>">
+                                <img class="main__send-comment-pfp" src="./data/pfp/<?= $user['pfp'] ?>" alt="">
+                            </a>
                         <?php else : ?>
-                            <img class="main__send-comment-pfp" src="./assets/img/png/default-pfp.png" alt="">
+
+                            <a href="./channel.php?channel=<?= $id_user ?>">
+                                <img class="main__send-comment-pfp" src="./assets/img/png/default-pfp.png" alt="">
+                            </a>
                         <?php endif; ?>
                     <?php else : ?>
                         <img class="main__send-comment-pfp" src="./assets/img/png/default-pfp.png" alt="">

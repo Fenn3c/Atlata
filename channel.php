@@ -96,7 +96,7 @@ if (isset($_GET['channel'])) {
                         <input type="hidden" name="channel" value="<?=$id_channel?>">
                         <input type="hidden" name="back" value="../channel.php?channel=<?=$id_channel?>">
                     <?php
-                    if(isset($id_user)):
+                    if(isset($_SESSION['id_user'])):
                     $isSubscribed = $db->isSubscribed($_SESSION['id_user'], $id_channel); 
                     if($isSubscribed):
                     ?>

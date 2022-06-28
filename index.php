@@ -15,9 +15,11 @@ if (isset($_GET['category'])) {
     $videos = $db->getVideos();
 }
 if(isset($_GET['search'])){
-    $search = strip_tags($_GET['search']);
-    if($search != ''){
+    $search = trim(strip_tags($_GET['search']));
+    if($search != ""){
         $videos = $db->searchVideos($search);
+    } else {
+        $videos = [];
     }
 }
 
