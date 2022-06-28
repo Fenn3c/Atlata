@@ -16,6 +16,10 @@ body {
   color: #F2F7FF;
 }
 
+.error {
+  color: #FB2626;
+}
+
 @font-face {
   font-family: Helvetica;
   src: url("../fonts/helvetica_regular.otf");
@@ -314,6 +318,46 @@ body {
   color: #F2F7FF;
   padding: 1rem 0.5rem;
   border: none;
+}
+.main__exit-btn {
+  cursor: pointer;
+  padding: 0.75rem 2rem;
+  background: #FB2626;
+  color: #F2F7FF;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+}
+.main__exit-btn_unsubscribed {
+  background-color: #4D5777;
+  color: #212430;
+}
+.main__exit-btn:hover {
+  background-color: #BD0F0F;
+  color: #212430;
+}
+.main__ext {
+  display: flex;
+}
+.main__admin-btn {
+  cursor: pointer;
+  margin-left: 2rem;
+  padding: 0.75rem 2rem;
+  background: #5093F6;
+  color: #F2F7FF;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+}
+.main__admin-btn_unsubscribed {
+  background-color: #4D5777;
+  color: #212430;
+}
+.main__admin-btn:hover {
+  background-color: #4E76B3;
+  color: #5093F6;
 }
 
 /*# sourceMappingURL=profile.css.map */

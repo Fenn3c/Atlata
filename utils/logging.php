@@ -1,5 +1,4 @@
 <?php
-require_once('../utils/database.php');
 function emitEvent($eventName)
 {
     $id_admin = $_SESSION['id_user'];

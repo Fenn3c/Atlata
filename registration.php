@@ -14,7 +14,7 @@ require_once('./utils/database.php');
 </head>
 
 <body>
-    <main class="authentication">
+    <main class="authentication authentication_reg">
         <img src="./assets/img/svg/logotype.svg" alt="" class="authentication__logotype">
         <div class="authentication__wrapper">
             <form class="authentication__form" method="post" action="./actions/register.php">
@@ -30,7 +30,8 @@ require_once('./utils/database.php');
                 <input id="password" type="password" name="password" class="authentication__input" type="text" placeholder="Введите ваш пароль" required>
                 <label for="repeat-password" class="authentication__label-required">Повторите пароль</label>
                 <input id="repeat-password" type="password" name="repeat-password" class="authentication__input" type="text" placeholder="Введите ваш пароль" required>
-
+                <label for="birthday" class="authentication__label-required">Введите вашу дату рождения</label>
+                <input id="birthday" name="birthday" class="authentication__input" type="date" required>
                 <button class="authentication__btn">Зарегестрироваться</button>
             </form>
             <a class="authentication__link" href="./login.php">Уже есть аккаунт?</a>

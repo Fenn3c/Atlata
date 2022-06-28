@@ -32,6 +32,10 @@ body {
   color: #F2F7FF;
 }
 
+.error {
+  color: #FB2626;
+}
+
 .authentication {
   background-color: #212430;
   width: 100%;
@@ -40,6 +44,9 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 8rem;
+}
+.authentication_reg {
+  padding-top: 2rem;
 }
 .authentication__error {
   color: #FB2626;

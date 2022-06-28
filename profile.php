@@ -180,6 +180,14 @@ if (isset($_SESSION['id_user'])) {
                         </label>
                     </form>
                 </div>
+                <div class="main__ext">
+                    <form action="./actions/exit.php" method="post">
+                        <button type="submit" name="exit" class="main__exit-btn">Выйти</button>
+                    </form>
+                    <?php if($user['permissions'] > 2):?>
+                        <a class="main__admin-btn" href="./admin.php">Панель администратора</a>
+                        <?php endif;?>
+                    </div>
             </div>
         </main>
     </div>

@@ -126,6 +126,10 @@ body {
   color: #F2F7FF;
 }
 
+.error {
+  color: #FB2626;
+}
+
 .header {
   width: 100%;
   position: relative;

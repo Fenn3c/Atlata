@@ -82,4 +82,44 @@
         padding: 1rem 0.5rem;
         border: none;
     }
+    &__exit-btn {
+        cursor: pointer;
+        padding: 0.75rem 2rem;
+        background: $error;
+        color: $main200;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        border-radius: 0.5rem;
+            &_unsubscribed{
+                background-color: $lighter_bg;
+                color: $dark_bg;
+            }
+        &:hover {
+            background-color: $errorHover;
+            color: $dark_bg;
+        }
+    }
+    &__ext{
+        display: flex;
+    }
+    &__admin-btn {
+        cursor: pointer;
+        margin-left: 2rem;
+        padding: 0.75rem 2rem;
+        background: $main500;
+        color: $main200;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        border-radius: 0.5rem;
+            &_unsubscribed{
+                background-color: $lighter_bg;
+                color: $dark_bg;
+            }
+        &:hover {
+            background-color: $main600;
+            color: $main500;
+        }
+    }
 }

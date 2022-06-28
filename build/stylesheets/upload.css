@@ -16,6 +16,10 @@ body {
   color: #F2F7FF;
 }
 
+.error {
+  color: #FB2626;
+}
+
 @font-face {
   font-family: Helvetica;
   src: url("../fonts/helvetica_regular.otf");

@@ -28,7 +28,7 @@ require('./utils/database.php');
                 <input type="password" id="password" name="password" class="authentication__input" type="text" placeholder="Введите ваш пароль" required>
                 <button class="authentication__btn">Войти</button>
             </form>
-            <a class="authentication__link" href="./register.html">Ещё не зарегистрированны?</a>
+            <a class="authentication__link" href="./registration.php">Ещё не зарегистрированны?</a>
         </div>
     </main>
 </body>

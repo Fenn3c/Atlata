@@ -1,11 +1,17 @@
 <?php
 require_once('./utils/sessionManager.php');
 require_once('./utils/database.php');
+require_once('./utils/logging.php');
 loginIsRequried();
+permissionRequried(3);
 $db = new DB();
 if (isset($_SESSION['id_user'])) {
     $id_user = $_SESSION['id_user'];
     $user = $db->getUserById($id_user);
+}
+if(isset($_POST['query'])){
+    $response = $db->query($_POST['query']);
+    emitEvent('SEND_QUERY');
 }
 
 ?>
@@ -101,25 +107,38 @@ if (isset($_SESSION['id_user'])) {
         <main class="main">
             <h1 class="main__title">Панель администратора</h1>
             <div class="main__wrapper">
-                <h2 class="main__statistics">Количество пользователей на ресурсе: 123123</h2>
-                <h2 class="main__statistics">Количество несовершонолетних пользователей на ресурсе: 123123</h2>
-                <h2 class="main__statistics">Количество видео на ресурсе: 123123</h2>
-                <h2 class="main__statistics">Общее количество просмотров на ресурсе: 123123</h2>
+                <h2 class="main__statistics">Количество пользователей на ресурсе: <?=$db->getUsersCount()?></h2>
+                <h2 class="main__statistics">Количество несовершеннолетних пользователей на ресурсе: <?=$db->getChildrenUsersCount()?></h2>
+                <h2 class="main__statistics">Количество видео на ресурсе: <?=$db->getVideosCount()?></h2>
+                <h2 class="main__statistics">Общее количество просмотров на ресурсе: <?=$db->getViewsCount()?></h2>
                 <h1 class="main__title main__title_query">Сделать запрос</h1>
-            <form action="./actions/make_query">
-                <input type="text">
-                <button>Отправить</button>
+            <form method="post">
+                <input name="query" type="text" class="main__query-input" placeholder="Введите запрос">
+                <button type="submit" class="main__query-btn">Отправить</button>
             </form>
-            <table>
-                <tr>
-                    <td>фвыфывфы</td>
-                    <td>asdsad</td>
+            <?php if(isset($response)):
+                if(gettype($response) == 'array'): 
+                ?>
+            <table class="main__table">
+                <tr class="main__tr main__tr_title">
+                <?php foreach(array_keys($response[0]) as $columnName): ?>
+                        <td class="main__td main__td_title">
+                            <?=$columnName?>
+                        </td>
+                        <?php endforeach; ?>
+                    </tr>
+                <?php foreach($response as $column): ?>
+                <tr class="main__tr">
+                <?php foreach($column as $row): ?>
+                    <td class="main__td"><?=$row?></td>
+                <?php endforeach;?>
                 </tr>
-                <tr>
-                    <td>фвыфывфы</td>
-                    <td>asdsad</td>
-                </tr>
+                <?php endforeach;?>
             </table>
+            <?php else: ?>
+                <p class="error"><?=$response?></p>
+                <?php endif;?>
+            <?php endif; ?>
             </div>
         </main>
     </div>

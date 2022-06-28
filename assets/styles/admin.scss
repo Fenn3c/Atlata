@@ -3,30 +3,93 @@
 @import './navbar.scss';
 @import './header.scss';
 @import './options.scss';
+
 .container {
     padding-left: 8rem;
 }
 
 .main {
     padding: 2rem;
+
     &__title {
         font-size: 2rem;
         margin-left: 2rem;
         margin-bottom: 2rem;
-        &_query{
+
+        &_query {
             margin-left: 0;
             margin-top: 2rem;
         }
     }
+
     &__wrapper {
         padding: 2rem;
         background-color: $dark_bg;
         border-radius: 1rem;
     }
 
-    &__statistics{
-        font-size: 1rem;
+    &__statistics {
+        font-size: 1.5rem;
         margin-bottom: 0.5rem;
     }
-   
+
+    &__query-input {
+        display: flex;
+        align-items: center;
+        position: relative;
+        border-radius: 1rem;
+        border: 0;
+        outline: none;
+        padding: 1.5rem;
+        width: 40rem;
+        background-color: $light_bg;
+        color: $main200;
+        margin-bottom: 2rem;
+
+        ::placeholder {
+            color: $lighter_bg;
+        }
+
+    }
+
+    &__query-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        height: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 1rem;
+        background-color: $main500;
+        outline: none;
+        border: none;
+        color: $main200;
+        margin-bottom: 2rem;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $main600;
+            color: $main500;
+
+            svg {
+                fill: $main500;
+            }
+        }
+    }
+
+    &__table {
+        max-width: 20rem;
+        overflow-x: hidden;
+        border: 1px solid $lighter_bg;
+        border-spacing: 0;
+    }
+
+    &__td {
+        padding: 1rem;
+        border: 1px solid $lighter_bg;
+    &_title{
+        color: $main500;
+    }
+    }
+    
 }

@@ -8,7 +8,7 @@ if (isset($_SESSION['id_user'])) {
     $user = $db->getUserById($id_user);
 }
 if (isset($_GET['video'])) {
-    if($id_user){
+    if (isset($id_user)) {
         $db->addView($id_user, $_GET['video']);
     }
     $id_video = strip_tags($_GET['video']);
@@ -167,23 +167,29 @@ if (isset($_GET['video'])) {
                         <p class="main__channel-subscriptions"><?= $video['subscribers'] ?> подпищиков</p>
                     </div>
                     <form class="main__subscribe" action="./actions/subscribe.php" method="post">
-                        <input type="hidden" name="channel" value="<?=$video['id_user']?>">
-                        <input type="hidden" name="back" value="../video.php?video=<?=$id_video?>">
-                    <?php
-                    $isSubscribed = $db->isSubscribed($_SESSION['id_user'], $video['id_user']); 
-                    if($isSubscribed):
-                    ?>
-                        <button class="main__subscribe-btn main__subscribe-btn_unsubscribed">Отписаться</button>
-                    <?php else: ?>
-                        <button class="main__subscribe-btn">Подписаться</button>
-                        <?php endif;?>
+                        <input type="hidden" name="channel" value="<?= $video['id_user'] ?>">
+                        <input type="hidden" name="back" value="../video.php?video=<?= $id_video ?>">
+                        <?php
+                        if (isset($id_user)) :
+                            $isSubscribed = $db->isSubscribed($id_user, $video['id_user']);
+                            if ($isSubscribed) :
+                        ?>
+                                <button class="main__subscribe-btn main__subscribe-btn_unsubscribed">Отписаться</button>
+                            <?php else : ?>
+                                <button class="main__subscribe-btn">Подписаться</button>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </form>
                     <div class="main__video-rating">
                         <form action="./actions/video_rating.php" method="post">
                             <input type="hidden" name="video" value="<?= $video['id_video'] ?>" />
                             <button class="main__rating-btn" type="submit" name="rating">
                                 <?php
-                                $rating = $db->getRating($id_user, $id_video);
+                                if (isset($id_user)) {
+                                    $rating = $db->getRating($id_user, $id_video);
+                                } else {
+                                    $rating = 0;
+                                }
                                 if ($rating) :
                                     if ($rating['rating'] == 1) : ?>
                                         <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -209,8 +215,14 @@ if (isset($_GET['video'])) {
                 <hr class="main__hr">
                 <h3 class="main__comments-title">Комментарии</h3>
                 <div class="main__send-comment">
-                    <?php if ($user['pfp']) : ?>
-                        <img class="main__send-comment-pfp" src="./data/pfp/<?= $user['pfp'] ?>" alt="">
+                    <?php
+
+                    if (isset($id_user)) :
+                        if ($user['pfp']) : ?>
+                            <img class="main__send-comment-pfp" src="./data/pfp/<?= $user['pfp'] ?>" alt="">
+                        <?php else : ?>
+                            <img class="main__send-comment-pfp" src="./assets/img/png/default-pfp.png" alt="">
+                        <?php endif; ?>
                     <?php else : ?>
                         <img class="main__send-comment-pfp" src="./assets/img/png/default-pfp.png" alt="">
                     <?php endif; ?>
@@ -225,7 +237,7 @@ if (isset($_GET['video'])) {
                     <div class="main__comments">
                         <div class="main__comment">
                             <?php if ($comment['pfp']) : ?>
-                                <img class="main__comment-pfp" src="./data/pfp/<?= $user['pfp'] ?>" alt="">
+                                <img class="main__comment-pfp" src="./data/pfp/<?= $comment['pfp'] ?>" alt="">
                             <?php else : ?>
                                 <img class="main__comment-pfp" src="./assets/img/png/default-pfp.png" alt="">
                             <?php endif; ?>
@@ -240,30 +252,34 @@ if (isset($_GET['video'])) {
                                 </p>
                                 <div class="main__comment-likes">
 
-                                <form action="./actions/comment_rating.php" method="post">
-                                    <input type="hidden" name="video" value="<?=$id_video?>">
-                                    <input type="hidden" name="comment" value="<?=$comment['id_comment']?>">
-                                    <button class="main__rating-btn" type="submit" name="rating">
-                                        <?php
-                                    $comment_rating = $db->getCommentRating($id_user, $comment['id_comment']);
-                                    if ($comment_rating) :
-                                        if ($comment_rating['rating'] == 1) : ?>
-                                            <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7 1.2998C3.6868 1.2998 1 3.959 1 7.2398C1 9.8882 2.05 16.1738 12.3856 22.5278C12.5707 22.6405 12.7833 22.7001 13 22.7001C13.2167 22.7001 13.4293 22.6405 13.6144 22.5278C23.95 16.1738 25 9.8882 25 7.2398C25 3.959 22.3132 1.2998 19 1.2998C15.6868 1.2998 13 4.8998 13 4.8998C13 4.8998 10.3132 1.2998 7 1.2998Z" fill="#5093F6" stroke="#5093F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        <?php else : ?>
-                                            <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7 1.29993C3.6868 1.29993 1 3.95913 1 7.23993C1 9.88833 2.05 16.1739 12.3856 22.5279C12.5707 22.6406 12.7833 22.7002 13 22.7002C13.2167 22.7002 13.4293 22.6406 13.6144 22.5279C23.95 16.1739 25 9.88833 25 7.23993C25 3.95913 22.3132 1.29993 19 1.29993C15.6868 1.29993 13 4.89993 13 4.89993C13 4.89993 10.3132 1.29993 7 1.29993Z" stroke="#5093F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        <?php endif; ?>
+                                    <form action="./actions/comment_rating.php" method="post">
+                                        <input type="hidden" name="video" value="<?= $id_video ?>">
+                                        <input type="hidden" name="comment" value="<?= $comment['id_comment'] ?>">
+                                        <button class="main__rating-btn" type="submit" name="rating">
+                                            <?php
+                                            if (isset($id_user)) {
+                                                $comment_rating = $db->getCommentRating($id_user, $comment['id_comment']);
+                                            } else {
+                                                $comment_rating = 0;
+                                            }
+                                            if ($comment_rating) :
+                                                if ($comment_rating['rating'] == 1) : ?>
+                                                    <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7 1.2998C3.6868 1.2998 1 3.959 1 7.2398C1 9.8882 2.05 16.1738 12.3856 22.5278C12.5707 22.6405 12.7833 22.7001 13 22.7001C13.2167 22.7001 13.4293 22.6405 13.6144 22.5278C23.95 16.1738 25 9.8882 25 7.2398C25 3.959 22.3132 1.2998 19 1.2998C15.6868 1.2998 13 4.8998 13 4.8998C13 4.8998 10.3132 1.2998 7 1.2998Z" fill="#5093F6" stroke="#5093F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                <?php else : ?>
+                                                    <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7 1.29993C3.6868 1.29993 1 3.95913 1 7.23993C1 9.88833 2.05 16.1739 12.3856 22.5279C12.5707 22.6406 12.7833 22.7002 13 22.7002C13.2167 22.7002 13.4293 22.6406 13.6144 22.5279C23.95 16.1739 25 9.88833 25 7.23993C25 3.95913 22.3132 1.29993 19 1.29993C15.6868 1.29993 13 4.89993 13 4.89993C13 4.89993 10.3132 1.29993 7 1.29993Z" stroke="#5093F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                <?php endif; ?>
 
-                                        <?php else : ?>
-                                        <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M7 1.29993C3.6868 1.29993 1 3.95913 1 7.23993C1 9.88833 2.05 16.1739 12.3856 22.5279C12.5707 22.6406 12.7833 22.7002 13 22.7002C13.2167 22.7002 13.4293 22.6406 13.6144 22.5279C23.95 16.1739 25 9.88833 25 7.23993C25 3.95913 22.3132 1.29993 19 1.29993C15.6868 1.29993 13 4.89993 13 4.89993C13 4.89993 10.3132 1.29993 7 1.29993Z" stroke="#5093F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    <?php endif; ?>
-                                </button>
-                            </form>
+                                            <?php else : ?>
+                                                <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7 1.29993C3.6868 1.29993 1 3.95913 1 7.23993C1 9.88833 2.05 16.1739 12.3856 22.5279C12.5707 22.6406 12.7833 22.7002 13 22.7002C13.2167 22.7002 13.4293 22.6406 13.6144 22.5279C23.95 16.1739 25 9.88833 25 7.23993C25 3.95913 22.3132 1.29993 19 1.29993C15.6868 1.29993 13 4.89993 13 4.89993C13 4.89993 10.3132 1.29993 7 1.29993Z" stroke="#5093F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            <?php endif; ?>
+                                        </button>
+                                    </form>
                                     <p class="main__comment-likes-count"><?= $comment['rating'] ?></p>
                                 </div>
                             </div>
@@ -284,7 +300,7 @@ if (isset($_GET['video'])) {
                         </div>
                         <div class="video-item__footer">
                             <div class="video-item__pfp-wrapper">
-                                <a href="./channel.php<?= $suggestion['id_user'] ?>" class="video-item__item__pfp-link">
+                                <a href="./channel.php?channel=<?= $suggestion['id_user'] ?>" class="video-item__item__pfp-link">
                                     <?php if ($suggestion['pfp']) : ?>
                                         <img src="./data/pfp/<?= $suggestion['pfp'] ?>" alt="" class="video-item__pfp">
                                     <?php else : ?>
@@ -297,7 +313,7 @@ if (isset($_GET['video'])) {
                                     <h3 class="video-item__title"><?= $suggestion['title'] ?></h3>
                                 </a>
                                 <p class="video-item__username">
-                                    <a href="./channel.php<?= $suggestion['id_user'] ?>" class="video-item__username-link"><?= $video['login'] ?></a>
+                                    <a href="./channel.php?channel=<?= $suggestion['id_user'] ?>" class="video-item__username-link"><?= $video['login'] ?></a>
                                 </p>
                                 <p class="video-item__statistics">
                                     <?= $suggestion['views'] ?> просмотров | <?= $suggestion['date'] ?>

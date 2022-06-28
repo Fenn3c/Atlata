@@ -6,9 +6,9 @@ if(isset($_POST['channel']) && isset($_POST['back'])){
     $db = new DB();
     $isSubscribed = $db->isSubscribed($_SESSION['id_user'], $_POST['channel']);
     if($isSubscribed){
-        $db->unsubscribe(3,3);
+        $db->unsubscribe($_SESSION['id_user'], $_POST['channel']);
     }else{
-        $db->subscribe(3, 3);
+        $db->subscribe($_SESSION['id_user'], $_POST['channel']);
     }
     header('Location: '.$_POST['back']);
 }else{

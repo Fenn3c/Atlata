@@ -14,14 +14,24 @@ class DB
 
         $this->db =  new PDO($dsn, $db_settings['USER'], $db_settings['PASSWORD'], $options);
     }
+    public function query($sql){
+        try{
+            $query = $this->db->query($sql);
+            $query->execute();
+        } catch(PDOException $e){
+            return $e;
+        }
+        return $query->fetchAll();
+    }
     //user
-    public function createUser($login, $email, $password)
+    public function createUser($login, $email, $password, $birthday)
     {
-        $query = $this->db->prepare("INSERT INTO users (login, email, password) VALUES (:login, :email, :password)");
+        $query = $this->db->prepare("INSERT INTO users (login, email, password, birthday) VALUES (:login, :email, :password, :birthday)");
         $query->execute(array(
             "login" =>  $login,
             "email" => $email,
-            "password" => $password
+            "password" => $password,
+            "birthday" => $birthday
         ));
         return $this->db->lastInsertId();
     }
@@ -84,6 +94,16 @@ class DB
             'banner' => $banner,
             'id_user' => $id_user
         ));
+    }
+    public function getUsersCount(){
+        $query = $this->db->prepare('SELECT COUNT(*) as count FROM users');
+        $query->execute();
+        return $query->fetch()['count'];
+    }
+    public function getChildrenUsersCount(){
+        $query = $this->db->prepare("SELECT COUNT(*) as count from (SELECT *, ( (YEAR(CURRENT_DATE) - YEAR(birthday)) - (DATE_FORMAT(CURRENT_DATE, '%m%d') < DATE_FORMAT(birthday, '%m%d')) ) AS age FROM users) as temp WHERE age <18");
+        $query->execute();
+        return $query->fetch()['count'];
     }
     //logs
     public function createLog($id_user, $event, $ip_address, $user_agent)
@@ -192,6 +212,11 @@ class DB
             "search" => "%$search%"
         ));
         return $query->fetchAll();
+    }
+    public function getVideosCount(){
+        $query = $this->db->prepare('SELECT COUNT(*) as count FROM videos');
+        $query->execute();
+        return $query->fetch()['count'];
     }
     //video rating
     public function getRating($id_user, $id_video)
@@ -316,5 +341,10 @@ class DB
             "id_user" => $id_user,
             "id_video" => $id_video,
         ));
+    }
+    public function getViewsCount(){
+        $query = $this->db->prepare('SELECT COUNT(*) as count FROM views');
+        $query->execute();
+        return $query->fetch()['count'];
     }
 }

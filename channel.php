@@ -63,12 +63,14 @@ if (isset($_GET['channel'])) {
     <div class="container">
         <main class="main">
             <?php
+            if(isset($_SESSION['id_user'])):
             if ($id_channel == $_SESSION['id_user']) :
             ?>
                 <form action="./actions/edit_banner.php" method="post" enctype="multipart/form-data" hidden>
                     <input id="banner-input" name="banner" type="file">
                     <button type="submit" id="submit-banner"></button>
                 </form>
+            <?php endif; ?>
             <?php endif; ?>
 
             <?php if ($channel['banner']) : ?>
@@ -94,12 +96,14 @@ if (isset($_GET['channel'])) {
                         <input type="hidden" name="channel" value="<?=$id_channel?>">
                         <input type="hidden" name="back" value="../channel.php?channel=<?=$id_channel?>">
                     <?php
+                    if(isset($id_user)):
                     $isSubscribed = $db->isSubscribed($_SESSION['id_user'], $id_channel); 
                     if($isSubscribed):
                     ?>
                         <button class="main__subscribe-btn main__subscribe-btn_unsubscribed">Отписаться</button>
                     <?php else: ?>
                         <button class="main__subscribe-btn">Подписаться</button>
+                        <?php endif;?>
                         <?php endif;?>
                     </form>
 
