@@ -15,11 +15,11 @@ if (isset($_FILES['video'])) {
             echo 'Длительность видео должна составлять не менее 1 секунды.';
             header('HTTP/1.1 500 Internal Server Error');
         } else{
-
             $thumbnail = getThumbnail('../data/video/' . $name);
             $db = new DB();
             $id_video = $db->saveRawVideo($_SESSION['id_user'], $duration, $thumbnail, $name);
             $_SESSION['UPLOADING_VIDEO'] = $id_video;
+            echo $thumbnail;
         }
     } else {
         echo $can_upload;
